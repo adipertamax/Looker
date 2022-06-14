@@ -4,7 +4,7 @@ view: kimap_category {
 
   dimension: kategori_grade {
     type: string
-    sql: ${TABLE}.KATEGORI_GRADE ;;
+    sql: ${TABLE}.KATEGORI_KEMASAN ;;
   }
 
   dimension: kategori_kemasan {
