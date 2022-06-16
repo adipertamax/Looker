@@ -76,4 +76,9 @@ view: ketahanan_stock {
     type: count
     drill_fields: []
   }
+
+  measure: sum_ketahanan {
+    type: sum
+    drill_fields: [ketahanan_stock]
+  }
 }
