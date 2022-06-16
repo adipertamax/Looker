@@ -79,6 +79,7 @@ view: ketahanan_stock {
 
   measure: sum_ketahanan {
     type: sum
-    drill_fields: [ketahanan_stock]
+    sql: ${TABLE}.KETAHANAN_STOCK;;
+    drill_fields: []
   }
 }
