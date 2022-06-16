@@ -34,3 +34,7 @@ explore: rencana_produksi {}
 explore: plant {}
 
 explore: marc {}
+
+explore: ketahanan_stock {}
+
+explore: realisasi_produksi {}
