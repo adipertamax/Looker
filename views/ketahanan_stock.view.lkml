@@ -85,6 +85,26 @@ view: ketahanan_stock {
     sql: ${TABLE}.POSTING_DATE ;;
   }
 
+#tambahan
+  dimension: category_group  {
+    type: string
+    case: {
+      when: {
+        sql: ${TABLE}.material_group_type = 'ADDITIVE' ;;
+        label: "Status"
+      }
+      when: {
+        sql: ${TABLE}.advertising_channel = 'PACKAGING' ;;
+        label: "Status"
+      }
+      when: {
+        sql: ${TABLE}.advertising_channel = 'OIL BASE' ;;
+        label: "Status LBO"
+      }
+     #else: "unknown"
+    }
+
+  }
   measure: count {
     type: count
     drill_fields: []
