@@ -2,24 +2,35 @@ view: ketahanan_stock {
   sql_table_name: `int-trial-gke.dm_ptpl.KETAHANAN_STOCK`
     ;;
 
+  dimension: material_plant_key {
+    primary_key: yes
+    type: string
+    hidden: yes
+    sql: CONCAT(${material_number}, ${plant});;
+  }
+
   dimension: avg_pemakaian_stock {
     type: number
     sql: ${TABLE}.AVG_PEMAKAIAN_STOCK ;;
+    value_format_name: decimal_2
   }
 
   dimension: current_stock {
     type: number
     sql: ${TABLE}.CURRENT_STOCK ;;
+    value_format_name: decimal_2
   }
 
   dimension: in_transit_stock {
     type: number
     sql: ${TABLE}.IN_TRANSIT_STOCK ;;
+    value_format_name: decimal_2
   }
 
   dimension: ketahanan_stock {
     type: number
     sql: ${TABLE}.KETAHANAN_STOCK ;;
+    value_format_name: decimal_2
   }
 
   dimension: ketahanan_stock_inc_intransit {
@@ -38,6 +49,7 @@ view: ketahanan_stock {
   }
 
   dimension: material_group_type {
+    label: "Category"
     type: string
     sql: ${TABLE}.MATERIAL_GROUP_TYPE ;;
   }
@@ -54,6 +66,7 @@ view: ketahanan_stock {
 
   dimension: plant {
     type: string
+    hidden: yes
     sql: ${TABLE}.PLANT ;;
   }
 
@@ -79,7 +92,18 @@ view: ketahanan_stock {
 
   measure: sum_ketahanan {
     type: sum
-    sql: ${TABLE}.KETAHANAN_STOCK;;
+    sql: ${ketahanan_stock};;
     drill_fields: []
+  }
+
+  measure: count_material {
+    type: count_distinct
+    sql: ${material_number} ;;
+    drill_fields: [details*]
+    value_format_name: decimal_2
+  }
+
+  set: details {
+    fields: [material_desc, material_group_type, ketahanan_stock, avg_pemakaian_stock, current_stock, in_transit_stock, ketahanan_stock_inc_intransit]
   }
 }

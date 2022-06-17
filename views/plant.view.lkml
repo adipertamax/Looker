@@ -4,10 +4,12 @@ view: plant {
 
   dimension: plant {
     type: string
+    hidden: yes
     sql: ${TABLE}.PLANT ;;
   }
 
   dimension: plant_desc {
+    label: "Plant Name"
     type: string
     sql: ${TABLE}.PLANT_DESC ;;
   }
