@@ -9,7 +9,7 @@ view: rencana_produksi {
   }
 
   dimension: month {
-    type: number
+    type: string
     sql: ${TABLE}.MONTH ;;
   }
 
@@ -36,7 +36,7 @@ view: rencana_produksi {
   }
 
   dimension: year {
-    type: number
+    type: string
     sql: ${TABLE}.YEAR ;;
   }
 
