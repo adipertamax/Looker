@@ -46,6 +46,7 @@ view: rencana_produksi {
   measure: sum_qty {
     type: sum
     sql: ${qty} ;;
+    drill_fields: []
   }
 
 }
