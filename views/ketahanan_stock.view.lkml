@@ -122,7 +122,6 @@ view: ketahanan_stock {
     drill_fields: []
   }
 
-
   measure: count_material {
     type: count_distinct
     sql: ${material_number} ;;
@@ -139,6 +138,7 @@ view: ketahanan_stock {
   measure: stock_resistance {
     value_format: "#,###.00"
     label_from_parameter: stock_granularity
+    drill_fields: []
     sql:
     {% if stock_granularity._parameter_value == "'Stock'" %}
       ${sum_ketahanan}
