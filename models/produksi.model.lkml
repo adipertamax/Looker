@@ -45,8 +45,8 @@ explore: RealisasiVSTarget {
     sql_on:
              ${rencana_produksi.plant}= ${RealisasiVSTarget.plant}
             and ${rencana_produksi.kimap}= ${RealisasiVSTarget.material_number}
-            and ${rencana_produksi.month}=${RealisasiVSTarget.Month_Produksi}
-            and ${rencana_produksi.year}=${RealisasiVSTarget.Year_Produksi}
+            and ${rencana_produksi.month}=cast(${RealisasiVSTarget.Month_Produksi} as string)
+            and ${rencana_produksi.year}=cast(${RealisasiVSTarget.Year_Produksi} as string)
     ;;
   }
 }
