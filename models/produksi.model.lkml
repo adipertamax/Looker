@@ -43,10 +43,7 @@ explore: RealisasiVSTarget {
     view_label: "rencana_produksi"
     relationship: many_to_one
     sql_on:
-             ${rencana_produksi.plant}= ${RealisasiVSTarget.plant}
-            and ${rencana_produksi.kimap}= ${RealisasiVSTarget.material_number}
-            and ${rencana_produksi.month}=cast(${RealisasiVSTarget.Month_Produksi} as string)
-            and ${rencana_produksi.year}=cast(${RealisasiVSTarget.Year_Produksi} as string)
+             ${rencana_produksi.kimap_material_key}=${RealisasiVSTarget.material_number_key}
             and ${rencana_produksi.qty}>0
             and ${rencana_produksi.kimap}<>'A060103727'
     ;;
