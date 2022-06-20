@@ -76,12 +76,12 @@ view: realisasi_produksi {
 
   dimension: Month_Produksi {
     type: string
-    sql: ${posting_month} ;;
+    sql: (EXTRACT(MONTH FROM RealisasiVSTarget.POSTING_DATE )) ;;
 
   }
   dimension: Year_Produksi {
     type: string
-    sql: ${posting_year} ;;
+    sql: (EXTRACT(YEAR FROM RealisasiVSTarget.POSTING_DATE )) ;;
 
   }
 
