@@ -23,6 +23,30 @@ explore: ketahanan_stok {
             AND ${ketahanan_stock.ketahanan_stock} <= (${status_ketahanan.max}+1)
       ;;
   }
+
+
+
+}
+explore: RealisasiVSTarget {
+  view_name: RealisasiVSTarget
+
+  join: plant {
+    type: left_outer
+    view_label: "Plant"
+    relationship: many_to_one
+    sql_on: ${plant.plant} = ${RealisasiVSTarget.plant} ;;
+  }
+
+  join: rencana_produksi {
+    type: left_outer
+    view_label: "rencana_produksi"
+    relationship: many_to_one
+    sql_on: ${rencana_produksi.month} = ${RealisasiVSTarget.Month_Produksi}
+            and  ${rencana_produksi.year}=${RealisasiVSTarget.Year_Produksi}
+            and ${rencana_produksi.plant}= ${RealisasiVSTarget.plant}
+            and ${rencana_produksi.kimap}= ${RealisasiVSTarget.material_number}
+    ;;
+  }
 }
 
 
