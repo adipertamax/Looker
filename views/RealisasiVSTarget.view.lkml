@@ -1,4 +1,4 @@
-view: realisasi_produksi {
+view: RealisasiVSTarget{
   sql_table_name: `int-trial-gke.dm_ptpl.REALISASI_PRODUKSI`
     ;;
 
