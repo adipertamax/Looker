@@ -75,12 +75,12 @@ view: RealisasiVSTarget{
   ####################==============TAMBAHAN=====================#####################
 
   dimension: Month_Produksi {
-    type: number
+    type: string
     sql: ${posting_month} ;;
 
   }
   dimension: Year_Produksi {
-    type: number
+    type: string
     sql: ${posting_year} ;;
 
   }
