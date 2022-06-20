@@ -94,7 +94,7 @@ view: ketahanan_stock {
         label: "Status"
       }
       when: {
-        sql: ${TABLE}material_group_type = 'PACKAGING' ;;
+        sql: ${TABLE}.material_group_type = 'PACKAGING' ;;
         label: "Status"
       }
       when: {
