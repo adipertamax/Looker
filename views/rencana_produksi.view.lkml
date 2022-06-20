@@ -16,7 +16,7 @@ view: rencana_produksi {
 
 
   dimension: plant {
-    type: number
+    type: string
     sql: ${TABLE}.PLANT ;;
   }
 
@@ -36,7 +36,7 @@ view: rencana_produksi {
   }
 
   dimension: year {
-    type: string
+    type: number
     sql: ${TABLE}.YEAR ;;
   }
 
