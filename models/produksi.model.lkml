@@ -47,6 +47,7 @@ explore: RealisasiVSTarget {
             and ${rencana_produksi.kimap}= ${RealisasiVSTarget.material_number}
             and ${rencana_produksi.month}=cast(${RealisasiVSTarget.Month_Produksi} as string)
             and ${rencana_produksi.year}=cast(${RealisasiVSTarget.Year_Produksi} as string)
+            and ${rencana_produksi.qty}>0
     ;;
   }
 }
