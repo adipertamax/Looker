@@ -1,8 +1,7 @@
 view: rencana_produksi {
   derived_table: {
     sql:
-      SELECT
-        SELECT * FROM RENCANA_PRODUKSI` where  KIMAP<>'A060103727' and qty>0  ;;
+      SELECT * FROM RENCANA_PRODUKSI` where  KIMAP<>'A060103727' and qty>0  ;;
   }
 
   dimension: kimap_material_key {
