@@ -4,6 +4,7 @@ view: rencana_produksi {
 
   dimension: kimap {
     type: string
+    primary_key: yes
     sql: ${TABLE}.KIMAP ;;
   }
 
