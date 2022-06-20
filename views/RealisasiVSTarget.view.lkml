@@ -75,13 +75,13 @@ view: RealisasiVSTarget{
   ####################==============TAMBAHAN=====================#####################
 
   dimension: Month_Produksi {
-    type: string
-    sql: ${posting_month} ;;
+    type: number
+    sql:extract(month from (${posting_date}) as Month_Produksi;;
 
   }
   dimension: Year_Produksi {
-    type: string
-    sql: ${posting_year} ;;
+    type: number
+    sql: extract(year from (${posting_date}) as as Year_Produksi ;;
 
   }
 
