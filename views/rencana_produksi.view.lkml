@@ -3,13 +3,13 @@ view: rencana_produksi {
     ;;
 
   dimension: kimap {
-    type: string
     primary_key: yes
-    sql: ${TABLE}.KIMAP ;;
+    type: string
+    sql:${TABLE}.KIMAP ;;
   }
 
   dimension: month {
-    type: number
+    type: string
     sql: ${TABLE}.MONTH ;;
   }
 
@@ -36,7 +36,7 @@ view: rencana_produksi {
   }
 
   dimension: year {
-    type: number
+    type: string
     sql: ${TABLE}.YEAR ;;
   }
 
