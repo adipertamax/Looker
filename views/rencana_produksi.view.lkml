@@ -1,6 +1,9 @@
 view: rencana_produksi {
-  sql_table_name: `test_ptpl.RENCANA_PRODUKSI`
-    ;;
+  derived_table: {
+    sql:
+      SELECT
+        SELECT * FROM RENCANA_PRODUKSI` where  KIMAP<>'A060103727' and qty>0  ;;
+  }
 
   dimension: kimap {
     primary_key: yes
