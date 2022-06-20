@@ -9,14 +9,14 @@ view: rencana_produksi {
   }
 
   dimension: month {
-    type: string
+    type: number
     sql: ${TABLE}.MONTH ;;
   }
 
 
 
   dimension: plant {
-    type: string
+    type: number
     sql: ${TABLE}.PLANT ;;
   }
 
