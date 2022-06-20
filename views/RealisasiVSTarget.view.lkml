@@ -81,7 +81,7 @@ view: RealisasiVSTarget{
   }
   dimension: Year_Produksi {
     type: number
-    sql: extract(year from ${posting_date}) as as Year_Produksi ;;
+    sql: extract(year from ${posting_date}) as Year_Produksi ;;
 
   }
 
