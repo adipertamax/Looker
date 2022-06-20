@@ -76,12 +76,12 @@ view: RealisasiVSTarget{
 
   dimension: Month_Produksi {
     type: number
-    sql:extract(month from (${posting_date}) as Month_Produksi;;
+    sql:extract(month from ${posting_date}) as Month_Produksi;;
 
   }
   dimension: Year_Produksi {
     type: number
-    sql: extract(year from (${posting_date}) as as Year_Produksi ;;
+    sql: extract(year from ${posting_date}) as as Year_Produksi ;;
 
   }
 
