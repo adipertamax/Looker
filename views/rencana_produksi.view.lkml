@@ -5,8 +5,13 @@ view: rencana_produksi {
         SELECT * FROM RENCANA_PRODUKSI` where  KIMAP<>'A060103727' and qty>0  ;;
   }
 
-  dimension: kimap {
+  dimension: kimap_material_key {
     primary_key: yes
+    type: string
+    sql:concat(${kimap},${plant},${month},${year}) ;;
+  }
+
+  dimension: kimap {
     type: string
     sql:${TABLE}.KIMAP ;;
   }
