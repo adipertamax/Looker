@@ -3,6 +3,7 @@ view: rencana_produksi {
     ;;
 
   dimension: kimap {
+    primary_key: yes
     type: string
     sql: ${TABLE}.KIMAP ;;
   }
