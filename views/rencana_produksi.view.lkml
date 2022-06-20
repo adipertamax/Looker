@@ -13,6 +13,8 @@ view: rencana_produksi {
     sql: ${TABLE}.MONTH ;;
   }
 
+
+
   dimension: plant {
     type: string
     sql: ${TABLE}.PLANT ;;
