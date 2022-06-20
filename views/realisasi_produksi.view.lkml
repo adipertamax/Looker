@@ -71,4 +71,18 @@ view: realisasi_produksi {
     type: count
     drill_fields: []
   }
+
+  ####################==============TAMBAHAN=====================#####################
+
+  dimension: Month_Produksi {
+    type: string
+    sql: ${posting_month} ;;
+
+  }
+  dimension: Year_Produksi {
+    type: string
+    sql: ${posting_year} ;;
+
+  }
+
 }
