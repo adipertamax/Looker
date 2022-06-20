@@ -5,7 +5,7 @@ view: rencana_produksi {
   dimension: kimap {
     primary_key: yes
     type: string
-    sql:distinct ${TABLE}.KIMAP ;;
+    sql:${TABLE}.KIMAP ;;
   }
 
   dimension: month {
