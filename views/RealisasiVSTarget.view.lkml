@@ -19,7 +19,6 @@ view: RealisasiVSTarget{
 
   dimension: material_number {
     type: string
-    primary_key: yes
     sql: ${TABLE}.MATERIAL_NUMBER ;;
   }
 
