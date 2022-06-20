@@ -75,13 +75,13 @@ view: realisasi_produksi {
   ####################==============TAMBAHAN=====================#####################
 
   dimension: Month_Produksi {
-    type: string
-    sql: EXTRACT(MONTH FROM ${posting_date}) ;;
+    type: number
+    sql: MONTH(${posting_date}) ;;
 
   }
   dimension: Year_Produksi {
-    type: string
-    sql: EXTRACT(YEAR FROM ${posting_date}) ;;
+    type: number
+    sql: YEAR(${posting_date}) ;;
 
   }
 
