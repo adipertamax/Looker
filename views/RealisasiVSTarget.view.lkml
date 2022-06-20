@@ -24,7 +24,7 @@ view: RealisasiVSTarget{
 
   dimension: material_number_key {
     type: string
-    sql: concat(${material_number},${plant},cast(extract(month from ${posting_date})as string),cast(extract(year from ${posting_date})as string) ;;
+    sql: concat(${material_number},${plant},extract(month from ${posting_date}),extract(year from ${posting_date}) ;;
   }
 
   dimension: plant {
