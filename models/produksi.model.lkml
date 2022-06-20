@@ -22,8 +22,17 @@ explore: ketahanan_stok {
             AND ${ketahanan_stock.ketahanan_stock} > ${status_ketahanan.min}
             AND ${ketahanan_stock.ketahanan_stock} <= (${status_ketahanan.max}+1)
       ;;
+
   }
 }
+
+# VISUALIZATION AND FORMATTING PARAMETERS
+map_layer: region_indonesia {
+  url: "https://github.com/yusufsyaifudin/wilayah-indonesia/blob/54c4f4003292c39e5033ccc3b4df886bafa42046/data/list_of_area/regencies.json"
+  property_key: "map_ptpl"
+}
+
+
 
 
 # # Select the views that should be a part of this model,

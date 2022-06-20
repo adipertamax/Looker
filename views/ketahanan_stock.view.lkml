@@ -116,11 +116,37 @@ view: ketahanan_stock {
     drill_fields: []
   }
 
+  measure: sum_ketahanan_intransit {
+    type: sum
+    sql: ${in_transit_stock};;
+    drill_fields: []
+  }
+
+
   measure: count_material {
     type: count_distinct
     sql: ${material_number} ;;
     drill_fields: [details*]
     value_format_name: decimal_2
+  }
+
+  parameter: stock_granularity {
+    type: string
+    allowed_value: { value: "Stock" }
+    allowed_value: { value: "In-Transit Stock" }
+  }
+
+  measure: stock_resistance {
+    value_format: "#,###.00"
+    label_from_parameter: stock_granularity
+    sql:
+    {% if stock_granularity._parameter_value == "'Stock'" %}
+      ${sum_ketahanan}
+    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+      ${sum_ketahanan_intransit}
+    {% else %}
+      NULL
+    {% endif %} ;;
   }
 
   set: details {
