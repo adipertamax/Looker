@@ -41,4 +41,11 @@ view: rencana_produksi {
     type: count
     drill_fields: []
   }
+
+  ####################======================TAMBAHAN===================#####################
+  measure: sum_qty {
+    type: sum
+    sql: ${qty} ;;
+  }
+
 }

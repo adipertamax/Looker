@@ -85,4 +85,9 @@ view: realisasi_produksi {
 
   }
 
+  measure: sum_realisasi {
+    type: sum
+    sql: ${realisasi} ;;
+  }
+
 }
