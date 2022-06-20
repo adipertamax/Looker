@@ -94,11 +94,11 @@ view: ketahanan_stock {
         label: "Status"
       }
       when: {
-        sql: ${TABLE}.advertising_channel = 'PACKAGING' ;;
+        sql: ${TABLE}material_group_type = 'PACKAGING' ;;
         label: "Status"
       }
       when: {
-        sql: ${TABLE}.advertising_channel = 'OIL BASE' ;;
+        sql: ${TABLE}.material_group_type = 'OIL BASE' ;;
         label: "Status LBO"
       }
      #else: "unknown"
