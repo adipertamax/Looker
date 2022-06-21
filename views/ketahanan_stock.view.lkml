@@ -149,6 +149,25 @@ view: ketahanan_stock {
     drill_fields: [details*]
   }
 
+  parameter: choose_stock{
+    type: unquoted
+    allowed_value: {
+      label: "Stock"
+      value: "KETAHANAN_STOCK"
+    }
+    allowed_value: {
+      label: "In Transit Stock"
+      value: "KETAHANAN_STOCK_INC_INTRANSIT"
+    }
+
+  }
+
+  measure: dynamic_sum {
+    type: sum
+    sql: ${TABLE}.{% parameter choose_stock %} ;;
+    value_format_name: "usd"
+  }
+
   set: details {
     fields: [material_desc, material_group_type, ketahanan_stock, avg_pemakaian_stock, current_stock, in_transit_stock, ketahanan_stock_inc_intransit]
   }
