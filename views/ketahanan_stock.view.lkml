@@ -141,9 +141,9 @@ view: ketahanan_stock {
     label_from_parameter: stock_granularity
     sql:
     {% if stock_granularity._parameter_value == "'Stock'" %}
-      ${sum_ketahanan}
+      ${sum_ketahanan}::sum
     {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
-      ${sum_ketahanan_intransit}
+      ${sum_ketahanan_intransit}::sum
     {% else %}
       NULL
     {% endif %} ;;
