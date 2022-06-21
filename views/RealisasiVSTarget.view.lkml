@@ -93,6 +93,7 @@ view: RealisasiVSTarget{
   measure: sum_realisasi {
     type: sum
     sql: ${realisasi} ;;
+    value_format_name: decimal_2
     drill_fields: [details*]
   }
 
