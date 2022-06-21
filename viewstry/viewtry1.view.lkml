@@ -19,6 +19,7 @@ view: viewtry1 {
   }
 
   dimension: material_num_plant_key {
+    primary_key: yes
     label : "key"
     type: string
     sql: CONCAT(${material_num},${plant}) ;;
