@@ -42,15 +42,15 @@ view: plant {
     type:string
     case: {
       when: {
-        sql: ${region_indo} = 'JAKARTA' ;;
+        sql: ${TABLE}.PLANT = 'LP01' ;;
         label: "106.816666"
       }
       when: {
-        sql: ${region_indo} = 'KABUPATEN CILACAP' ;;
+        sql:${TABLE}.PLANT = 'LP02' ;;
         label: "108.98861"
       }
       when: {
-        sql: ${region_indo} = 'KABUPATEN GRESIK' ;;
+        sql: ${TABLE}.PLANT = 'LP03' ;;
         label: "112.553"
       }
     }
@@ -60,15 +60,15 @@ view: plant {
     type:string
     case: {
       when: {
-        sql: ${region_indo} = 'JAKARTA' ;;
+        sql: ${TABLE}.PLANT = 'LP01' ;;
         label: "-6.200000"
       }
       when: {
-        sql: ${region_indo} = 'KABUPATEN CILACAP' ;;
+        sql: ${TABLE}.PLANT = 'LP02' ;;
         label: "-7.57417"
       }
       when: {
-        sql: ${region_indo} = 'KABUPATEN GRESIK' ;;
+        sql: ${TABLE}.PLANT = 'LP03' ;;
         label: "-7.1933"
       }
     }
