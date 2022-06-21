@@ -118,7 +118,7 @@ view: ketahanan_stock {
 
   measure: sum_ketahanan_intransit {
     type: sum
-    sql: ${in_transit_stock};;
+    sql: ${ketahanan_stock_inc_intransit};;
     drill_fields: []
   }
 
@@ -129,6 +129,7 @@ view: ketahanan_stock {
     value_format_name: decimal_2
   }
 
+#Parameter ini Tidak bisa show di dashboard ?
   parameter: stock_granularity {
     type: string
     allowed_value: { value: "Stock" }
@@ -149,6 +150,7 @@ view: ketahanan_stock {
     drill_fields: [details*]
   }
 
+### parameter yg bisa digunakan
   parameter: choose_stock{
     type: unquoted
     allowed_value: {
@@ -159,13 +161,13 @@ view: ketahanan_stock {
       label: "In Transit Stock"
       value: "KETAHANAN_STOCK_INC_INTRANSIT"
     }
-
   }
 
   measure: dynamic_sum {
     type: sum
     sql: ${TABLE}.{% parameter choose_stock %} ;;
-    value_format_name: "usd"
+    value_format: "#,###.00"
+    drill_fields: [details*]
   }
 
   set: details {
