@@ -24,30 +24,28 @@ explore: ketahanan_stok {
       ;;
 
   }
-
-
-
 }
+
 explore: RealisasiVSTarget {
   view_name: RealisasiVSTarget
 
   join: plant {
     type: left_outer
-    view_label: "Plant"
+    view_label: "plant"
     relationship: many_to_one
-    sql_on: ${plant.plant} = ${RealisasiVSTarget.plant} ;;
+    sql_on: ${plant.plant} = ${RealisasiVSTarget.plant}} ;;
   }
 
-  join: rencana_produksi {
-    type: left_outer
-    view_label: "rencana_produksi"
-    relationship: many_to_one
-    sql_on:
-             ${rencana_produksi.kimap_material_key}=${RealisasiVSTarget.material_number_key}
-            and ${rencana_produksi.qty}>0
-            and ${rencana_produksi.kimap}<>'A060103727'
-    ;;
-  }
+  # join: rencana_produksi {
+  #   type: left_outer
+  #   view_label: "rencana_produksi"
+  #   relationship: many_to_one
+  #   sql_on:
+  #           ${rencana_produksi.kimap_material_key}=${RealisasiVSTarget.material_number_key}
+  #           and ${rencana_produksi.qty}>0
+  #           and ${rencana_produksi.kimap}<>'A060103727'
+  #   ;;
+  # }
 }
 
 # VISUALIZATION AND FORMATTING PARAMETERS

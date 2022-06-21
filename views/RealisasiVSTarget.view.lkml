@@ -107,8 +107,6 @@ view: RealisasiVSTarget{
     sql: ${selisih} ;;
   }
 
-
-
   set: details {
     fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]
   }

@@ -82,7 +82,6 @@ view: realisasi_produksi {
   dimension: Year_Produksi {
     type: number
     sql: YEAR(${posting_date}) ;;
-
   }
 
   measure: sum_realisasi {
@@ -90,4 +89,23 @@ view: realisasi_produksi {
     sql: ${realisasi} ;;
   }
 
+  measure: sum_target {
+    type: sum
+    sql: ${target} ;;
+  }
+
+  measure: sum_selisih {
+    type: sum
+    sql: ${selisih} ;;
+  }
+
+  measure: percent_of_diff {
+    type: sum
+    sql: ${presentase_selisih} ;;
+  }
+
+  measure: percent_of_realization {
+    type: sum
+    sql: ${presentase_realisasi} ;;
+  }
 }
