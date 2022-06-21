@@ -53,7 +53,7 @@ view: rencana_produksi {
   }
 
   ####################======================TAMBAHAN===================#####################
-  measure: sum_qty {
+  measure: sum_target {
     type: sum
     sql: ${qty} ;;
     drill_fields: []
