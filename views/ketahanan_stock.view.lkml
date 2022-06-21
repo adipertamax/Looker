@@ -146,7 +146,7 @@ view: ketahanan_stock {
     {% else %}
       NULL
     {% endif %} ;;
-    drill_fields: []
+    drill_fields: [details*]
   }
 
   set: details {

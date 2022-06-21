@@ -93,6 +93,7 @@ view: RealisasiVSTarget{
   measure: sum_realisasi {
     type: sum
     sql: ${realisasi} ;;
+    drill_fields: [details*]
   }
 
   measure: sum_target {
@@ -105,4 +106,7 @@ view: RealisasiVSTarget{
     sql: ${selisih} ;;
   }
 
+  set: details {
+    fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]
+  }
 }
