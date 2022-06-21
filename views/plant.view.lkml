@@ -80,6 +80,7 @@ view: plant {
     sql_longitude:${longitude} ;;
 
   }
+
   # dimension: map_ptpl {
   #   type: string
   #   map_layer_name: region_indonesia    # this is your map layer
