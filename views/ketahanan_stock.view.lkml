@@ -118,7 +118,7 @@ view: ketahanan_stock {
 
   measure: sum_ketahanan_intransit {
     type: sum
-    sql: ${in_transit_stock};;
+    sql: ${ketahanan_stock_inc_intransit};;
     drill_fields: []
   }
 
