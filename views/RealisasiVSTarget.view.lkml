@@ -90,11 +90,7 @@ view: RealisasiVSTarget{
 
   }
 
-  dimension: looker_image {
-    type: string
-    sql: ${TABLE}.homepage_url;;
-    html: <img src="https://industri.akprind.ac.id/logo-pertamina/" /> ;;
-  }
+
 
   measure: sum_realisasi {
     type: sum
