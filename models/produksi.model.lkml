@@ -33,7 +33,7 @@ explore: RealisasiVSTarget {
     type: left_outer
     view_label: "plant"
     relationship: many_to_one
-    sql_on: ${plant.plant} = ${RealisasiVSTarget.plant}} ;;
+    sql_on: ${plant.plant} = ${RealisasiVSTarget.plant} ;;
   }
 
   # join: rencana_produksi {
