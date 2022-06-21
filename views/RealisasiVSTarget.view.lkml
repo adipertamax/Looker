@@ -95,4 +95,14 @@ view: RealisasiVSTarget{
     sql: ${realisasi} ;;
   }
 
+  measure: sum_target {
+    type: sum
+    sql: ${target} ;;
+  }
+
+  measure: sum_selisih {
+    type: sum
+    sql: ${selisih} ;;
+  }
+
 }
