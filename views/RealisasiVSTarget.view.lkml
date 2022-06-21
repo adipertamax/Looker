@@ -107,6 +107,12 @@ view: RealisasiVSTarget{
     sql: ${selisih} ;;
   }
 
+  measure: percent_of_realization_calc {
+    type: number
+    value_format_name: percent_2
+    sql: ${sum_realisasi}/${sum_target} ;;
+  }
+
   set: details {
     fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]
   }
