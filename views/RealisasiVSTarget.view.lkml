@@ -94,51 +94,51 @@ view: RealisasiVSTarget{
     type: string
      case: {
       when:{
-      sql: left(${posting_month})='01' ;;
+      sql: left(${posting_month},2)='01' ;;
         label: "Jan"
         }
       when:{
-        sql: left(${posting_month})='02' ;;
+        sql: left(${posting_month},2)='02' ;;
         label: "Feb"
       }
       when:{
-        sql: left(${posting_month})='03' ;;
+        sql: left(${posting_month},2)='03' ;;
         label: "Mar"
       }
       when:{
-        sql: left(${posting_month})='04' ;;
+        sql: left(${posting_month},2)='04' ;;
         label: "Apr"
       }
       when:{
-        sql: left(${posting_month})='05' ;;
+        sql: left(${posting_month},2)='05' ;;
         label: "May"
       }
       when:{
-        sql: left(${posting_month})='06' ;;
+        sql: left(${posting_month},2)='06' ;;
         label: "Jun"
       }
       when:{
-        sql: left(${posting_month})='07' ;;
+        sql: left(${posting_month},2)='07' ;;
         label: "Jul"
       }
       when:{
-        sql: left(${posting_month})='08' ;;
+        sql: left(${posting_month},2)='08' ;;
         label: "Aug"
       }
       when:{
-        sql: left(${posting_month})='09' ;;
+        sql: left(${posting_month},2)='09' ;;
         label: "Sep"
       }
       when:{
-        sql: left(${posting_month})='10' ;;
+        sql: left(${posting_month},2)='10' ;;
         label: "Oct"
       }
       when:{
-        sql: left(${posting_month})='11' ;;
+        sql: left(${posting_month},2)='11' ;;
         label: "Nov"
       }
       when:{
-        sql: left(${posting_month})='12' ;;
+        sql: left(${posting_month},2)='12' ;;
         label: "Dec"
       }
       #else: "Not Defined"
