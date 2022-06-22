@@ -95,51 +95,51 @@ view: RealisasiVSTarget{
      case: {
       when:{
       sql: right(${posting_month},2)='01' ;;
-        label: "Jan"
+        label:"JANUARI"
         }
       when:{
         sql: right(${posting_month},2)='02' ;;
-        label: "Feb"
+        label: "FEBRUARI"
       }
       when:{
         sql: right(${posting_month},2)='03' ;;
-        label: "Mar"
+        label: "MARET"
       }
       when:{
         sql: right(${posting_month},2)='04' ;;
-        label: "Apr"
+        label: "APRIL"
       }
       when:{
         sql: right(${posting_month},2)='05' ;;
-        label: "May"
+        label: "MEI"
       }
       when:{
         sql: right(${posting_month},2)='06' ;;
-        label: "Jun"
+        label: "JUNI"
       }
       when:{
         sql: right(${posting_month},2)='07' ;;
-        label: "Jul"
+        label: "JULI"
       }
       when:{
         sql: right(${posting_month},2)='08' ;;
-        label: "Aug"
+        label: "AGUSTUS"
       }
       when:{
         sql: right(${posting_month},2)='09' ;;
-        label: "Sep"
+        label: "SEPTEMBER"
       }
       when:{
         sql: right(${posting_month},2)='10' ;;
-        label: "Oct"
+        label: "OKTOBER"
       }
       when:{
         sql: right(${posting_month},2)='11' ;;
-        label: "Nov"
+        label: "NOVEMBER"
       }
       when:{
         sql: right(${posting_month},2)='12' ;;
-        label: "Dec"
+        label: "DESEMBER"
       }
       #else: "Not Defined"
     }
