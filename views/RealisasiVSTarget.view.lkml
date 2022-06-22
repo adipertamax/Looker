@@ -90,6 +90,17 @@ view: RealisasiVSTarget{
 
   }
 
+  dimension: title {
+
+    type: string
+
+    sql: ${posting_month}
+
+          html: <h1>Sales on  ${posting_month} </h1> ;;
+
+  }
+
+
   measure: sum_realisasi {
     type: sum
     sql: ${realisasi} ;;
@@ -106,6 +117,14 @@ view: RealisasiVSTarget{
     type: sum
     sql: ${selisih} ;;
   }
+
+  measure: percent_of_realization_calc {
+    type: number
+    value_format_name: percent_2
+    sql: ${sum_realisasi}/${sum_target} ;;
+  }
+
+
 
   set: details {
     fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]

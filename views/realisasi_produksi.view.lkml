@@ -108,4 +108,6 @@ view: realisasi_produksi {
     type: sum
     sql: ${presentase_realisasi} ;;
   }
+
+
 }
