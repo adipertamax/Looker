@@ -91,13 +91,9 @@ view: RealisasiVSTarget{
   }
 
   dimension: title {
-
     type: string
-
-    sql: ${posting_month}
-
-          html: <h1>Sales on  ${posting_month} </h1> ;;
-
+    sql: ${posting_month} ;;
+    html: <h1>Dashboard: {{rendered_value}}</h1> ;;
   }
 
 
@@ -123,6 +119,7 @@ view: RealisasiVSTarget{
     value_format_name: percent_2
     sql: ${sum_realisasi}/${sum_target} ;;
   }
+
 
 
 
