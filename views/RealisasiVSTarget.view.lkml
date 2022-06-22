@@ -124,6 +124,11 @@ view: RealisasiVSTarget{
     sql: ${sum_realisasi}/${sum_target} ;;
   }
 
+  measure: percent_of_diff_calc {
+    type: number
+    value_format_name: percent_2
+    sql: ${sum_selisih}/${sum_target} ;;
+  }
 
 
   set: details {
