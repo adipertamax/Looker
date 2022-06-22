@@ -141,7 +141,7 @@ view: RealisasiVSTarget{
         sql: left(${posting_month})='12' ;;
         label: "Dec"
       }
-      else: "Not Defined"
+      #else: "Not Defined"
     }
 
     html: <h1>Pencapaian Dashboard {{rendered_value}}</h1> ;;
