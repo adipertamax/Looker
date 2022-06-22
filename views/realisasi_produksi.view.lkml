@@ -2,7 +2,7 @@ view: realisasi_produksi {
   sql_table_name: `int-trial-gke.dm_ptpl.REALISASI_PRODUKSI`
     ;;
 
-  dimension: kategori_grade {
+  dimension: kategori_grad {
     type: string
     sql: ${TABLE}.KATEGORI_GRADE ;;
   }
