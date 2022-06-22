@@ -1,16 +1,26 @@
 view: rencana_produksi {
-  sql_table_name: `test_ptpl.RENCANA_PRODUKSI`
-    ;;
+  derived_table: {
+    sql:
+      SELECT * FROM RENCANA_PRODUKSI where  KIMAP<>'A060103727' and qty>0  ;;
+  }
+
+  dimension: kimap_material_key {
+    primary_key: yes
+    type: string
+    sql:concat(${kimap},${plant},${month},${year}) ;;
+  }
 
   dimension: kimap {
     type: string
-    sql: ${TABLE}.KIMAP ;;
+    sql:${TABLE}.KIMAP ;;
   }
 
   dimension: month {
     type: string
     sql: ${TABLE}.MONTH ;;
   }
+
+
 
   dimension: plant {
     type: string
@@ -41,4 +51,12 @@ view: rencana_produksi {
     type: count
     drill_fields: []
   }
+
+  ####################======================TAMBAHAN===================#####################
+  measure: sum_target {
+    type: sum
+    sql: ${qty} ;;
+    drill_fields: []
+  }
+
 }

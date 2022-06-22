@@ -7,6 +7,11 @@ datagroup: tes_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
+##tes1
+
+##jelek
+
+
 
 persist_with: tes_default_datagroup
 
@@ -29,3 +34,7 @@ explore: rencana_produksi {}
 explore: plant {}
 
 explore: marc {}
+
+explore: ketahanan_stock {}
+
+explore: realisasi_produksi {}
