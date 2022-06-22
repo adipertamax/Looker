@@ -92,23 +92,58 @@ view: RealisasiVSTarget{
 
   dimension: title {
     type: string
-    sql: case when left(${posting_month})='01' then concat('Jan', ${posting_year})
-    when left(${posting_month})='02' then concat('Feb', ${posting_year})
-     when left(${posting_month})='03' then concat('Mar', ${posting_year})
-     when left(${posting_month})='04' then concat('Apr', ${posting_year})
-     when left(${posting_month})='05' then concat('May', ${posting_year})
-     when left(${posting_month})='06' then concat('Jun', ${posting_year})
-     when left(${posting_month})='07' then concat('Jul', ${posting_year})
-     when left(${posting_month})='08' then concat('Aug', ${posting_year})
-     when left(${posting_month})='09' then concat('Sep', ${posting_year})
-     when left(${posting_month})='10' then concat('Oct', ${posting_year})
-     when left(${posting_month})='11' then concat('Nov', ${posting_year})
-     when left(${posting_month})='12' then concat('Dec', ${posting_year})
-    else ${posting_month}
-    end
+     case: {
+      when:{
+      sql: left(${posting_month})='01' ;;
+        label: "Jan"
+        }
+      when:{
+        sql: left(${posting_month})='02' ;;
+        label: "Feb"
+      }
+      when:{
+        sql: left(${posting_month})='03' ;;
+        label: "Mar"
+      }
+      when:{
+        sql: left(${posting_month})='04' ;;
+        label: "Apr"
+      }
+      when:{
+        sql: left(${posting_month})='05' ;;
+        label: "May"
+      }
+      when:{
+        sql: left(${posting_month})='06' ;;
+        label: "Jun"
+      }
+      when:{
+        sql: left(${posting_month})='07' ;;
+        label: "Jul"
+      }
+      when:{
+        sql: left(${posting_month})='08' ;;
+        label: "Aug"
+      }
+      when:{
+        sql: left(${posting_month})='09' ;;
+        label: "Sep"
+      }
+      when:{
+        sql: left(${posting_month})='10' ;;
+        label: "Oct"
+      }
+      when:{
+        sql: left(${posting_month})='11' ;;
+        label: "Nov"
+      }
+      when:{
+        sql: left(${posting_month})='12' ;;
+        label: "Dec"
+      }
+      else: "Not Defined"
+    }
 
-
-    ;;
     html: <h1>Pencapaian Dashboard {{rendered_value}}</h1> ;;
   }
 
