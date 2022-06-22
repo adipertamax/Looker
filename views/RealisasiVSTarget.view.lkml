@@ -154,6 +154,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_realisasi {
+    label: "Realisasi"
     type: sum
     sql: ${realisasi} ;;
     value_format_name: decimal_0
@@ -161,6 +162,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_target {
+    label: "Target"
     type: sum
     sql: ${target} ;;
   }
@@ -168,9 +170,11 @@ view: RealisasiVSTarget{
   measure: sum_selisih {
     type: sum
     sql: ${selisih} ;;
+    value_format_name: decimal_0
   }
 
   measure: percent_of_realization_calc {
+    label: "% of Realization"
     type: number
     value_format_name: percent_2
     sql: ${sum_realisasi}/${sum_target} ;;
@@ -185,6 +189,7 @@ view: RealisasiVSTarget{
 
 
   set: details {
-    fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]
+    fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
+      realisasi, target, presentase_realisasi]
   }
 }
