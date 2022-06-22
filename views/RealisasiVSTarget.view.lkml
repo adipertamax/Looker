@@ -92,7 +92,23 @@ view: RealisasiVSTarget{
 
   dimension: title {
     type: string
-    sql: ${posting_month} ;;
+    sql: case when left(${posting_month})='01' then concat('Jan' ${posting_year})
+    when left(${posting_month})='02' then concat('Jan' ${posting_year})
+     when left(${posting_month})='03' then concat('Jan' ${posting_year})
+     when left(${posting_month})='04' then concat('Jan' ${posting_year})
+     when left(${posting_month})='05' then concat('Jan' ${posting_year})
+     when left(${posting_month})='06' then concat('Jan' ${posting_year})
+     when left(${posting_month})='07' then concat('Jan' ${posting_year})
+     when left(${posting_month})='08' then concat('Jan' ${posting_year})
+     when left(${posting_month})='09' then concat('Jan' ${posting_year})
+     when left(${posting_month})='10' then concat('Jan' ${posting_year})
+     when left(${posting_month})='11' then concat('Jan' ${posting_year})
+     when left(${posting_month})='12' then concat('Jan' ${posting_year})
+    else ${posting_month}
+    end
+
+
+    ;;
     html: <h1>Pencapaian Dashboard {{rendered_value}}</h1> ;;
   }
 
