@@ -178,18 +178,42 @@ view: RealisasiVSTarget{
     type: number
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
+    html:
+      {{ rendered_value }} from Target
+      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
+      <li>Target: {{ sum_target._rendered_value }}</li>
+      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+    ;;
   }
 
   measure: percent_of_diff_calc {
+    label: "% of Difference "
     type: number
-    value_format_name: percent_2
-    sql: ${sum_selisih}/${sum_target} ;;
+    value_format_name: percent_0
+    sql: 1-${percent_of_realization_calc};;
+    drill_fields: [details*]
+    html:
+    {{ rendered_value }} from Target
+    <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
+    <li>Target: {{ sum_target._rendered_value }}</li>
+    <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+    ;;
+  }
+
+  #hanya untuk detail
+  measure: percent_of_realization {
+    label: "% of Realization"
+    type: number
+    value_format_name: percent_0
+    sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
   }
 
 
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      realisasi, target, presentase_realisasi]
+      sum_realisasi, sum_target, percent_of_realization]
   }
 }
