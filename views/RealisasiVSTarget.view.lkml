@@ -93,7 +93,7 @@ view: RealisasiVSTarget{
   dimension: title {
     type: string
     sql: ${posting_month} ;;
-    html: <h1>Dashboard: {{rendered_value}}</h1> ;;
+    html: <h1>Pencapaian Dashboard {{rendered_value}}</h1> ;;
   }
 
 
