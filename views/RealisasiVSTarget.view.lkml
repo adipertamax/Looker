@@ -150,7 +150,7 @@ view: RealisasiVSTarget{
   dimension: TitleFull {
     type: string
     sql: concat(${title},' ',${posting_year}) ;;
-    html: <p><b><font color="black" size="10" >      PENCAPAIAN DASHBOARD {{rendered_value}}</font><b><p> ;;
+    html: <p><b><font color="black" size="10" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
   }
 
   measure: sum_realisasi {
@@ -176,8 +176,8 @@ view: RealisasiVSTarget{
   measure: percent_of_realization_calc {
     label: "% of Realization"
     type: number
-    value_format_name: percent_2
-    sql: ${sum_realisasi}/${sum_target} ;;
+    value_format_name: percent_0
+    sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
   }
 
   measure: percent_of_diff_calc {
