@@ -147,7 +147,7 @@ view: RealisasiVSTarget{
     html: <p><b><font color="black" size="10" >      PENCAPAIAN DASHBOARD {{rendered_value}}</font><b><p> ;;
   }
 
-  dimension: TitleFul {
+  dimension: TitleFull {
     type: string
     sql: concat(${title},' ',${posting_year}) ;;
     html: <p><b><font color="black" size="10" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
