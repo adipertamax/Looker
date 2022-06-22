@@ -144,7 +144,7 @@ view: RealisasiVSTarget{
       #else: "Not Defined"
     }
 
-    html: <h1>Pencapaian Dashboard {{rendered_value}}</h1> ;;
+    html: <p><b><font color="black" size="10" >      PENCAPAIAN DASHBOARD {{rendered_value}}</font><b><p> ;;
   }
 
 
