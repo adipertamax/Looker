@@ -173,7 +173,7 @@ view: RealisasiVSTarget{
   measure: percent_of_realization_calc {
     type: number
     value_format_name: percent_2
-    sql: ${sum_realisasi}/${sum_target} ;;
+    sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
   }
 
   measure: percent_of_diff_calc {
