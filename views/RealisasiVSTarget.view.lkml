@@ -169,6 +169,7 @@ view: RealisasiVSTarget{
     label: "SelisihTooltip"
     type: number
     hidden: yes
+    value_format_name: decimal_0
     sql: ${sum_realisasi}-${sum_target} ;;
   }
 
