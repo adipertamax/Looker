@@ -19,11 +19,13 @@ view: RealisasiVSTarget{
 
   dimension: material_number {
     type: string
+    hidden: yes
     sql: ${TABLE}.MATERIAL_NUMBER ;;
   }
 
   dimension: material_number_key {
     type: string
+    hidden: yes
     sql: CONCAT(${material_number},${plant}, cast(extract(month from ${posting_date}) as string), cast(extract(year from ${posting_date}) as string) ) ;;
   }
 
@@ -49,11 +51,13 @@ view: RealisasiVSTarget{
 
   dimension: presentase_realisasi {
     type: number
+    hidden: yes
     sql: ${TABLE}.PRESENTASE_REALISASI ;;
   }
 
   dimension: presentase_selisih {
     type: number
+    hidden: yes
     sql: ${TABLE}.PRESENTASE_SELISIH ;;
   }
 
@@ -62,10 +66,7 @@ view: RealisasiVSTarget{
     sql: ${TABLE}.REALISASI ;;
   }
 
-  dimension: selisih {
-    type: number
-    sql: ${TABLE}.SELISIH ;;
-  }
+
 
   dimension: target {
     type: number
@@ -79,18 +80,14 @@ view: RealisasiVSTarget{
 
   ####################==============TAMBAHAN=====================#####################
 
-  dimension: Month_Produksi {
-    type: number
-    sql:extract(month from ${posting_date});;
 
-  }
   dimension: Year_Produksi {
     type: number
     sql: extract(year from ${posting_date}) ;;
 
   }
 
-  dimension: title {
+  dimension: Month_Produksi {
     type: string
      case: {
       when:{
@@ -149,7 +146,7 @@ view: RealisasiVSTarget{
 
   dimension: TitleFull {
     type: string
-    sql: concat(${title},' ',${posting_year}) ;;
+    sql: concat(${Month_Produksi},' ',${posting_year}) ;;
     html: <p><b><font color="black" size="10" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
   }
 
@@ -167,12 +164,8 @@ view: RealisasiVSTarget{
     sql: ${target} ;;
   }
 
-  measure: sum_selisih {
-    type: sum
-    sql: ${selisih} ;;
-    value_format_name: decimal_0
-  }
 
+<<<<<<< HEAD
   measure: jumlah_kemasan {
     type: count_distinct
     sql: ${kategori_kemasan} ;;
@@ -193,27 +186,22 @@ view: RealisasiVSTarget{
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
     ;;
   }
+=======
+>>>>>>> branch 'master' of https://github.com/adipertamax/Looker.git
 
-  measure: percent_of_diff_calc {
-    label: "% of Difference "
-    type: number
-    value_format_name: percent_0
-    sql: 1-${percent_of_realization_calc};;
-    drill_fields: [details*]
-    html:
-    {{ rendered_value }} from Target
-    <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
-    <li>Target: {{ sum_target._rendered_value }}</li>
-    <li>Selisih: {{ sum_selisih._rendered_value }}</li>
-    ;;
-  }
-
-  #hanya untuk detail
   measure: percent_of_realization {
     label: "% of Realization"
     type: number
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
+}
+
+  measure: Selisih {
+    label: "% of Selisih"
+    type: number
+    value_format_name: percent_0
+    sql: 1-${percent_of_realization}  ;;
     drill_fields: [details*]
   }
 
