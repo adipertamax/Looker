@@ -164,8 +164,6 @@ view: RealisasiVSTarget{
     sql: ${target} ;;
   }
 
-
-<<<<<<< HEAD
   measure: jumlah_kemasan {
     type: count_distinct
     sql: ${kategori_kemasan} ;;
@@ -186,8 +184,6 @@ view: RealisasiVSTarget{
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
     ;;
   }
-=======
->>>>>>> branch 'master' of https://github.com/adipertamax/Looker.git
 
   measure: percent_of_realization {
     label: "% of Realization"
