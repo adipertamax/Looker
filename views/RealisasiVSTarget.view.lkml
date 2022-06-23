@@ -150,6 +150,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_realisasi {
+    label: "Realisasi"
     type: sum
     sql: ${realisasi} ;;
     value_format_name: decimal_0
@@ -157,6 +158,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_target {
+    label: "Target"
     type: sum
     sql: ${target} ;;
   }
@@ -164,24 +166,58 @@ view: RealisasiVSTarget{
   measure: sum_selisih {
     type: sum
     sql: ${selisih} ;;
+    value_format_name: decimal_0
   }
 
   measure: percent_of_realization_calc {
+    label: "% of Realization"
     type: number
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
+<<<<<<< HEAD
+=======
+    html:
+      {{ rendered_value }} from Target
+      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
+      <li>Target: {{ sum_target._rendered_value }}</li>
+      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+    ;;
+>>>>>>> branch 'master' of https://github.com/adipertamax/Looker.git
   }
 
   measure: percent_of_diff_calc {
+    label: "% of Difference "
     type: number
+<<<<<<< HEAD
     value_format_name: percent_2
     sql: 1- ${percent_of_realization_calc} ;;
+=======
+    value_format_name: percent_0
+    sql: 1-${percent_of_realization_calc};;
+    drill_fields: [details*]
+    html:
+    {{ rendered_value }} from Target
+    <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
+    <li>Target: {{ sum_target._rendered_value }}</li>
+    <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+    ;;
+  }
+
+  #hanya untuk detail
+  measure: percent_of_realization {
+    label: "% of Realization"
+    type: number
+    value_format_name: percent_0
+    sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
+>>>>>>> branch 'master' of https://github.com/adipertamax/Looker.git
   }
 
 
 
   set: details {
-    fields: [material_number, plant,kategori_kemasan, kategori_grade,material_desc, target, realisasi, presentase_realisasi]
+    fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
+      sum_realisasi, sum_target, percent_of_realization]
   }
 }
