@@ -162,6 +162,7 @@ view: RealisasiVSTarget{
     label: "Target"
     type: sum
     sql: ${target} ;;
+    drill_fields: [details*]
   }
 
   measure: sum_selisih {
