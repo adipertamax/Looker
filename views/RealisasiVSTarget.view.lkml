@@ -212,6 +212,7 @@ view: RealisasiVSTarget{
 
   #hanya untuk detail
   measure: percent_of_realization {
+    label: "% of Realization"
     type: number
     hidden: yes
     value_format_name: percent_0
