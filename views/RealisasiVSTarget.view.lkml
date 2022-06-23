@@ -164,6 +164,13 @@ view: RealisasiVSTarget{
     sql: ${target} ;;
   }
 
+  measure: sum_selisih {
+    label: "SelisihTooltip"
+    type: number
+    hidden: yes
+    sql: ${sum_realisasi}-${target} ;;
+  }
+
   measure: jumlah_kemasan {
     type: count_distinct
     sql: ${kategori_kemasan} ;;
@@ -184,6 +191,10 @@ view: RealisasiVSTarget{
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
     ;;
   }
+
+
+
+
 
   measure: percent_of_diff_calc {
     label: "% of Difference"
