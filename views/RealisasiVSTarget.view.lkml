@@ -62,10 +62,7 @@ view: RealisasiVSTarget{
     sql: ${TABLE}.REALISASI ;;
   }
 
-  dimension: selisih {
-    type: number
-    sql: ${TABLE}.SELISIH ;;
-  }
+
 
   dimension: target {
     type: number
@@ -163,11 +160,7 @@ view: RealisasiVSTarget{
     sql: ${target} ;;
   }
 
-  measure: sum_selisih {
-    type: sum
-    sql: ${selisih} ;;
-    value_format_name: decimal_0
-  }
+
 
   measure: percent_of_realization {
     label: "% of Realization"
@@ -177,6 +170,13 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
 }
 
+  measure: Selisih {
+    label: "% of Selisih"
+    type: number
+    value_format_name: percent_0
+    sql: 1-${percent_of_realization}  ;;
+    drill_fields: [details*]
+  }
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
