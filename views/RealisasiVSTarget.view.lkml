@@ -212,7 +212,6 @@ view: RealisasiVSTarget{
 
   #hanya untuk detail
   measure: percent_of_realization {
-    label: "% of Realization"
     type: number
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
