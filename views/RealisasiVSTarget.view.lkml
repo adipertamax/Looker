@@ -168,7 +168,7 @@ view: RealisasiVSTarget{
     label: "SelisihTooltip"
     type: number
     hidden: yes
-    sql: ${sum_realisasi}-${target} ;;
+    sql: ${sum_realisasi}-${sum_target} ;;
   }
 
   measure: jumlah_kemasan {
@@ -214,6 +214,7 @@ view: RealisasiVSTarget{
   measure: percent_of_realization {
     label: "% of Realization"
     type: number
+    hidden: yes
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
