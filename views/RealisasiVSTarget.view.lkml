@@ -19,11 +19,13 @@ view: RealisasiVSTarget{
 
   dimension: material_number {
     type: string
+    hidden: yes
     sql: ${TABLE}.MATERIAL_NUMBER ;;
   }
 
   dimension: material_number_key {
     type: string
+    hidden: yes
     sql: CONCAT(${material_number},${plant}, cast(extract(month from ${posting_date}) as string), cast(extract(year from ${posting_date}) as string) ) ;;
   }
 
@@ -49,11 +51,13 @@ view: RealisasiVSTarget{
 
   dimension: presentase_realisasi {
     type: number
+    hidden: yes
     sql: ${TABLE}.PRESENTASE_REALISASI ;;
   }
 
   dimension: presentase_selisih {
     type: number
+    hidden: yes
     sql: ${TABLE}.PRESENTASE_SELISIH ;;
   }
 
@@ -177,6 +181,8 @@ view: RealisasiVSTarget{
     sql: 1-${percent_of_realization}  ;;
     drill_fields: [details*]
   }
+
+
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
