@@ -79,18 +79,14 @@ view: RealisasiVSTarget{
 
   ####################==============TAMBAHAN=====================#####################
 
-  dimension: Month_Produksi {
-    type: number
-    sql:extract(month from ${posting_date});;
 
-  }
   dimension: Year_Produksi {
     type: number
     sql: extract(year from ${posting_date}) ;;
 
   }
 
-  dimension: title {
+  dimension: Month_Produksi {
     type: string
      case: {
       when:{
@@ -149,7 +145,7 @@ view: RealisasiVSTarget{
 
   dimension: TitleFull {
     type: string
-    sql: concat(${title},' ',${posting_year}) ;;
+    sql: concat(${Month_Produksi},' ',${posting_year}) ;;
     html: <p><b><font color="black" size="10" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
   }
 
@@ -174,12 +170,13 @@ view: RealisasiVSTarget{
     type: number
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
   }
 
   measure: percent_of_diff_calc {
     type: number
     value_format_name: percent_2
-    sql: ${sum_selisih}/${sum_target} ;;
+    sql: 1- ${percent_of_realization_calc} ;;
   }
 
 
