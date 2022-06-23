@@ -173,11 +173,18 @@ view: RealisasiVSTarget{
     value_format_name: decimal_0
   }
 
+  measure: jumlah_kemasan {
+    type: count_distinct
+    sql: ${kategori_kemasan} ;;
+
+  }
+
   measure: percent_of_realization_calc {
     label: "% of Realization"
     type: number
     value_format_name: percent_0
-    sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    sql:
+      case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
     html:
       {{ rendered_value }} from Target

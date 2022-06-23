@@ -137,6 +137,7 @@ view: ketahanan_stock {
   }
 
   measure: stock_resistance {
+    type:  number
     value_format: "#,###.00"
     label_from_parameter: stock_granularity
     sql:
