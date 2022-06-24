@@ -237,6 +237,15 @@ view: RealisasiVSTarget{
 
   }
 
+  measure: achievement {
+    label: "achievement"
+    type: number
+    value_format_name: percent_0
+    sql:
+      case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
+    drill_fields: [details*]
+    }
+
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
       sum_realisasi, sum_target, percent_of_realization, indikator]
