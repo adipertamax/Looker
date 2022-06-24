@@ -177,6 +177,10 @@ view: RealisasiVSTarget{
 
   }
 
+
+
+
+
   measure: percent_of_realization_calc {
     label: "% of Realization"
     type: number
