@@ -147,7 +147,7 @@ view: RealisasiVSTarget{
   dimension: TitleFull {
     type: string
     sql: concat(${Month_Produksi},' ',${posting_year}) ;;
-    html: <p><b><font color="black" size="10" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
+    html: <p><b><font color="black" size="8" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
   }
 
   measure: sum_realisasi {
