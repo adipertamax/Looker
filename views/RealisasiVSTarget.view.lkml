@@ -162,12 +162,14 @@ view: RealisasiVSTarget{
     label: "Target"
     type: sum
     sql: ${target} ;;
+    drill_fields: [details*]
   }
 
   measure: sum_selisih {
     label: "SelisihTooltip"
     type: number
     hidden: yes
+    value_format_name: decimal_0
     sql: ${sum_realisasi}-${sum_target} ;;
   }
 
@@ -224,9 +226,19 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
   }
 
+  #hanya untuk detail
+  measure: indikator  {
+    type: string
+    sql:
+      case when ${percent_of_realization_calc}>1 then "Good"
+      else "Bad"
+      end
+    ;;
+
+  }
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      sum_realisasi, sum_target, percent_of_realization]
+      sum_realisasi, sum_target, percent_of_realization, indikator]
   }
 }
