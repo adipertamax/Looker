@@ -30,6 +30,7 @@ view: RealisasiVSTarget{
   }
 
   dimension: plant {
+    hidden: yes
     type: string
     sql: ${TABLE}.PLANT ;;
   }
@@ -42,6 +43,7 @@ view: RealisasiVSTarget{
       week,
       month,
       month_name,
+      month_num,
       quarter,
       year
     ]
@@ -70,6 +72,7 @@ view: RealisasiVSTarget{
 
 
   dimension: target {
+    hidden: yes
     type: number
     sql: ${TABLE}.TARGET ;;
   }
@@ -147,7 +150,7 @@ view: RealisasiVSTarget{
 
   dimension: TitleFull {
     type: string
-    sql: concat(${Month_Produksi},' ',${posting_year}) ;;
+    sql: concat(${posting_month_name},' ',${posting_year}) ;;
     html: <p><b><font color="black" size="8" >      PENCAPAIAN  {{rendered_value}} PER KEMASAN</font><b><p> ;;
   }
 
@@ -214,7 +217,7 @@ view: RealisasiVSTarget{
       <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
       <li>Target: {{ sum_target._rendered_value }}</li>
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
-    ;;
+          ;;
   }
 
   #hanya untuk detail
@@ -225,6 +228,12 @@ view: RealisasiVSTarget{
     value_format_name: percent_0
     sql: case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
+    html:
+    {% if value > 1 %}
+    <p style="background-color: green; font-size: 100%">Good</p>
+    {% else %}
+    <p style="background-color: yellow; font-size:100%">Bad</p>
+    {% endif %};;
   }
 
   #hanya untuk detail
@@ -235,7 +244,6 @@ view: RealisasiVSTarget{
       else "Bad"
       end
     ;;
-
   }
 
   measure: achievement {
@@ -249,6 +257,6 @@ view: RealisasiVSTarget{
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      sum_realisasi, sum_target, percent_of_realization, indikator]
+      sum_target, sum_realisasi, percent_of_realization]
   }
 }

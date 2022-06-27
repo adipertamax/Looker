@@ -39,6 +39,7 @@ view: plant {
   }
 
   dimension: longitude {
+    hidden: yes
     type:string
     case: {
       when: {
@@ -57,6 +58,7 @@ view: plant {
   }
 
   dimension: latitude {
+    hidden: yes
     type:string
     case: {
       when: {

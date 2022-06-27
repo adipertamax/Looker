@@ -27,6 +27,7 @@ explore: ketahanan_stok {
 }
 
 explore: RealisasiVSTarget {
+  label: "Realiasasi VS Target"
   view_name: RealisasiVSTarget
 
   join: plant {
