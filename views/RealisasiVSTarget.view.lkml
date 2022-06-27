@@ -41,6 +41,7 @@ view: RealisasiVSTarget{
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
