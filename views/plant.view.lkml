@@ -83,9 +83,9 @@ view: plant {
 
   }
 
-  # dimension: map_ptpl {
-  #   type: string
-  #   map_layer_name: region_indonesia    # this is your map layer
-  #   sql: ${region_indo};;
-  # }
+#   dimension: map_ptpl {
+#     type: string
+#     map_layer_name: region_indonesia    # this is your map layer
+#     sql: ${region_indo};;
+#   }
 }

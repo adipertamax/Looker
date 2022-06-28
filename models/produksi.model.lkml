@@ -51,8 +51,8 @@ explore: RealisasiVSTarget {
 
 # VISUALIZATION AND FORMATTING PARAMETERS
 map_layer: region_indonesia {
-  url: "https://github.com/yusufsyaifudin/wilayah-indonesia/blob/54c4f4003292c39e5033ccc3b4df886bafa42046/data/list_of_area/regencies.json"
-  property_key: "map_ptpl"
+  url: "https://raw.githubusercontent.com/adipertamax/topojson/master/indonesia-topojson-city-regency.topo.json"
+ # property_key: "map_ptpl"
 }
 
 
