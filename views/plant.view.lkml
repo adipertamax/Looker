@@ -24,7 +24,7 @@ view: plant {
     case: {
       when: {
         sql: ${TABLE}.PLANT = 'LP01' ;;
-        label: "JAKARTA"
+        label: "KOTA DKI JAKARTA"
       }
       when: {
         sql: ${TABLE}.PLANT = 'LP02' ;;
