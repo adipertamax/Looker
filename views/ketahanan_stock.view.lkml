@@ -122,7 +122,7 @@ view: ketahanan_stock {
     drill_fields: []
   }
 
-  measure: count_material {
+  measure: total_material {
     type: count_distinct
     sql: ${material_number} ;;
     drill_fields: [details*]
@@ -171,11 +171,7 @@ view: ketahanan_stock {
     drill_fields: [details*]
   }
 
-  # dimension: title {
-  #   type: string
-  #   sql: ${plant};;
-  #     html: <h1>Ketahanan on {{rendered_value}}</h1> ;;
-  # }
+
 
   set: details {
     fields: [material_desc, material_group_type, ketahanan_stock, in_transit_stock, ketahanan_stock_inc_intransit]
