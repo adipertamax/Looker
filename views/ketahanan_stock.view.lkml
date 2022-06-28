@@ -263,11 +263,11 @@ view: ketahanan_stock {
     type: unquoted
     allowed_value: {
       label: "Stock"
-      value: "KETAHANAN_STOCK"
+      value: "total_status_stock_ap"
     }
     allowed_value: {
       label: "In Transit Stock"
-      value: "KETAHANAN_STOCK_INC_INTRANSIT"
+      value: "total_status_stock_in_transit_ap"
     }
   }
 
