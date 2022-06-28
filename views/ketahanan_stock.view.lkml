@@ -248,21 +248,23 @@ view: ketahanan_stock {
   }
 
 
-  parameter: param_stock{
-    type: unquoted
-    allowed_value: {
-      label: "Status Stock ap"
-      value: "status_stock_ap"
-    }
-    allowed_value: {
-      label: "In Transit Stock ap"
-      value: "status_stock_in_transit_ap"
-    }
+  parameter: param_stock {
+    type: string
+    allowed_value: { value: "Stock" }
+    allowed_value: { value: "In-Transit Stock" }
   }
 
-  dimension: dynamic_stock {
-    type: string
-    sql: {% parameter param_stock %} ;;
+  dimension: stock_test {
+    type:  string
+    label_from_parameter: param_stock
+    sql:
+    {% if stock_granularity._parameter_value == "'Stock'" %}
+      ${status_stock_ap}
+    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+      ${status_stock_in_transit_ap}
+    {% else %}
+      NULL
+    {% endif %} ;;
 
   }
 
