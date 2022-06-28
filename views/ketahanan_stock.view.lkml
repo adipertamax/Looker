@@ -272,7 +272,7 @@ view: ketahanan_stock {
   }
 
   measure: dynamic_stock {
-    type: count_distinct
+    type: number
     sql: ${TABLE}.{% parameter param_stock %} ;;
     drill_fields: [details*]
   }
