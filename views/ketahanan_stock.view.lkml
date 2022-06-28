@@ -262,7 +262,7 @@ view: ketahanan_stock {
 
   dimension: dynamic_stock {
     type: string
-    sql: ${TABLE}.{% parameter param_stock %} ;;
+    sql: ${% parameter param_stock %} ;;
 
   }
 
