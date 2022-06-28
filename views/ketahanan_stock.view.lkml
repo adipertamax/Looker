@@ -203,7 +203,7 @@ view: ketahanan_stock {
       label:"Safe"
     }
     when:{
-      sql: ${material_group_type}="LBO" and ${ketahanan_stock}<3 and ${ketahanan_stock}<15 ;;
+      sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<15 ;;
       label:"Critical"
     }
     }
