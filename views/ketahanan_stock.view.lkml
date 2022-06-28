@@ -258,9 +258,9 @@ view: ketahanan_stock {
     type:  string
     label_from_parameter: param_stock
     sql:
-    {% if stock_granularity._parameter_value == "'Stock'" %}
+    {% if stock_granularity._parameter_value == "Stock" %}
       ${status_stock_ap}
-    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+    {% elsif stock_granularity._parameter_value == "In-Transit Stock" %}
       ${status_stock_in_transit_ap}
     {% else %}
      "Not Enable"
