@@ -262,11 +262,11 @@ view: ketahanan_stock {
   parameter: param_stock{
     type: unquoted
     allowed_value: {
-      label: "Stock"
+      label: "Stock ap"
       value: "total_status_stock_ap"
     }
     allowed_value: {
-      label: "In Transit Stock"
+      label: "In Transit Stock ap"
       value: "total_status_stock_in_transit_ap"
     }
   }
