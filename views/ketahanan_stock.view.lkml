@@ -249,17 +249,24 @@ view: ketahanan_stock {
 
 
   parameter: param_stock {
-    type: string
-    allowed_value: { value: "Stock" }
-    allowed_value: { value: "In-Transit Stock" }
+    type: unquoted
+    allowed_value: {
+
+      label: "Status by Stock"
+      value: "stock"
+    }
+    allowed_value: {
+      label: "Status by InTransit"
+      value: "inTransit"
+    }
   }
 
   dimension: stock_test {
     type:  string
     sql:
-    {% if param_stock._parameter_value == 'Stock' %}
+    {% if param_stock._parameter_value == 'stock' %}
       ${status_stock_ap}
-    {% elsif param_stock._parameter_value == 'In-Transit Stock' %}
+    {% elsif param_stock._parameter_value == 'inTransit' %}
       ${status_stock_in_transit_ap}
     {% else %}
      "Not Enable"
