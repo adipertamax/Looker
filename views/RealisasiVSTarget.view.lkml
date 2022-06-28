@@ -230,9 +230,9 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     html:
     {% if value > 1 %}
-    <p style="background-color: green; font-size: 100%">Good</p>
+      <p style="background-color: lightgreen; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% else %}
-    <p style="background-color: yellow; font-size:100%">Bad</p>
+      <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
   }
 
@@ -257,6 +257,6 @@ view: RealisasiVSTarget{
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      sum_target, sum_realisasi, percent_of_realization]
+      sum_realisasi, sum_target,  percent_of_realization]
   }
 }
