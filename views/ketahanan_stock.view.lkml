@@ -246,33 +246,22 @@ view: ketahanan_stock {
       }
     }
   }
-  measure: total_status_stock_ap {
-    type: count_distinct
-    sql: ${status_stock_ap} ;;
-    drill_fields: [details*]
-    value_format_name: decimal_0
-  }
-  measure: total_status_stock_in_transit_ap {
-    type: count_distinct
-    sql: ${status_stock_in_transit_ap} ;;
-    drill_fields: [details*]
-    value_format_name: decimal_0
-  }
+
 
   parameter: param_stock{
     type: unquoted
     allowed_value: {
-      label: "Stock ap"
-      value: "total_status_stock_ap"
+      label: "Status Stock ap"
+      value: "status_stock_ap"
     }
     allowed_value: {
       label: "In Transit Stock ap"
-      value: "total_status_stock_in_transit_ap"
+      value: "status_stock_in_transit_ap"
     }
   }
 
   measure: dynamic_stock {
-    type: number
+    type: string
     sql: ${TABLE}.{% parameter param_stock %} ;;
     drill_fields: [details*]
   }
