@@ -88,4 +88,11 @@ view: plant {
 #     map_layer_name: region_indonesia    # this is your map layer
 #     sql: ${region_indo};;
 #   }
+
+
+  dimension: testing_map {
+    type: string
+    map_layer_name: countries    # this is your map layer
+    sql: ${region_indo};;
+  }
 }
