@@ -262,7 +262,8 @@ view: ketahanan_stock {
       ${status_stock_ap}
     {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
       ${status_stock_in_transit_ap}
-
+    {% else %}
+     ${status_stock_ap}
     {% endif %} ;;
 
   }
