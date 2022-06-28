@@ -256,11 +256,10 @@ view: ketahanan_stock {
 
   dimension: stock_test {
     type:  string
-    label_from_parameter: param_stock
     sql:
-    {% if stock_granularity._parameter_value == 'Stock' %}
+    {% if param_stock._parameter_value == 'Stock' %}
       ${status_stock_ap}
-    {% elsif stock_granularity._parameter_value == 'In-Transit Stock' %}
+    {% elsif param_stock._parameter_value == 'In-Transit Stock' %}
       ${status_stock_in_transit_ap}
     {% else %}
      "Not Enable"
