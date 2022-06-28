@@ -52,7 +52,7 @@ explore: RealisasiVSTarget {
 # VISUALIZATION AND FORMATTING PARAMETERS
 map_layer: region_indonesia {
   url: "https://raw.githubusercontent.com/adipertamax/topojson/master/indonesia-topojson-city-regency.topo.json"
- # property_key: "map_ptpl"
+  property_key: "map_ptpl"
 }
 
 
