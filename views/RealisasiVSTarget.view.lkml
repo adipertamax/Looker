@@ -237,18 +237,9 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     }
 
-  measure: totalachieve {
-    type: number
-    sql: CASE
-        WHEN
-         ${sum_realisasi}>${target} THEN 1
-        WHEN
-           ${sum_realisasi}<=${target}THEN 0
 
-      END
-      ;;
 
-  }
+
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
