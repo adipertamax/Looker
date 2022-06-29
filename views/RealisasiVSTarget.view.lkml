@@ -252,7 +252,10 @@ dimension: flag {
 
 }
 
-
+  measure: flag_dim {
+    type: yesno
+    sql: ${sum_realisasi}>${sum_target} ;;
+  }
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
