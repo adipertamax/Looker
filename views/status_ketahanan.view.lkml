@@ -60,4 +60,9 @@ view: status_ketahanan {
     type: count
     drill_fields: []
   }
+
+  set: details {
+    fields: [ketahanan_stock.material_desc, ketahanan_stock.material_group_type, ketahanan_stock.ketahanan_stock,
+      ketahanan_stock.in_transit_stock, ketahanan_stock.ketahanan_stock_inc_intransit]
+  }
 }

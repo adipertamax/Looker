@@ -154,8 +154,6 @@ view: RealisasiVSTarget{
     html: <p><b><font color="black" size="8" >      PENCAPAIAN  {{rendered_value}} </font><b><p> ;;
   }
 
-
-
   measure: sum_realisasi {
     label: "Realisasi"
     type: sum
@@ -163,7 +161,6 @@ view: RealisasiVSTarget{
     value_format_name: decimal_0
     drill_fields: [details*]
   }
-
 
   measure: sum_target {
     label: "Target"
@@ -186,10 +183,6 @@ view: RealisasiVSTarget{
 
   }
 
-
-
-
-
   measure: percent_of_realization_calc {
     label: "% of Realization"
     type: number
@@ -204,10 +197,6 @@ view: RealisasiVSTarget{
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
     ;;
   }
-
-
-
-
 
   measure: percent_of_diff_calc {
     label: "% of Difference"
@@ -237,16 +226,6 @@ view: RealisasiVSTarget{
     {% else %}
       <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
-  }
-
-  #hanya untuk detail
-  measure: indikator  {
-    type: string
-    sql:
-      case when ${percent_of_realization_calc}>1 then "Good"
-      else "Bad"
-      end
-    ;;
   }
 
   measure: achievement {
