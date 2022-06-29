@@ -151,25 +151,6 @@ view: ketahanan_stock {
     drill_fields: [details*]
   }
 
-### parameter yg bisa digunakan
-  parameter: choose_stock{
-    type: unquoted
-    allowed_value: {
-      label: "Stock"
-      value: "KETAHANAN_STOCK"
-    }
-    allowed_value: {
-      label: "In Transit Stock"
-      value: "KETAHANAN_STOCK_INC_INTRANSIT"
-    }
-  }
-
-  measure: dynamic_sum {
-    type: sum
-    sql: ${TABLE}.{% parameter choose_stock %} ;;
-    value_format: "#,###.00"
-    drill_fields: [details*]
-  }
 ####Tambahan_anas#####
   dimension: status_stock_ap {
     type: string
