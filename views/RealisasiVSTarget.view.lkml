@@ -237,7 +237,20 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     }
 
+dimension: flag {
+  type: string
+  case: {
+    when:{
+      sql: ${realisasi}>${target} ;;
+      label:"Yes"
+    }
+    when:{
+      sql: ${realisasi}<=${target} ;;
+      label:"No"
+    }
+    }
 
+}
 
 
 
