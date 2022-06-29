@@ -106,9 +106,16 @@ view: ketahanan_stock {
 
   }
   measure: count {
+    label: "Jumlah Material"
     type: count
-    drill_fields: []
-  }
+    drill_fields: [details*]
+    # html:
+    # {% if value > 50 %}
+    # <p style="background-color: lightgreen; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    # {% else %}
+    # <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
+    # {% endif %};;
+}
 
   measure: sum_ketahanan {
     type: sum
@@ -253,6 +260,19 @@ view: ketahanan_stock {
      "Not Enable"
     {% endif %} ;;
 
+  }
+
+  measure: jumlah {
+    type: sum
+    sql: CASE
+        WHEN
+          ${material_group_type}="ADDITIVE" THEN 1
+        WHEN
+          ${material_group_type}="PACKAGING" THEN 0
+        WHEN
+        ${material_group_type}="LBO" THEN 0
+        END
+      ;;
   }
 
   set: details {
