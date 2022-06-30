@@ -268,7 +268,18 @@ view: ketahanan_stock {
     {% else %}
      "Not Enable"
     {% endif %} ;;
+  }
 
+  dimension: param_status {
+    type:  string
+    sql:
+    {% if stock_granularity._parameter_value == "'Stock'" %}
+      ${status_stock_ap}
+    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+      ${status_stock_in_transit_ap}
+    {% else %}
+     "Not Enable"
+    {% endif %} ;;
   }
 
   measure: jumlah {
@@ -302,6 +313,30 @@ view: ketahanan_stock {
     label: "In Transit Stock"
     sql: ${in_transit_stock} ;;
     value_format_name: decimal_2
+  }
+
+  measure: percent_of_current_usage {
+    type: number
+    label: "% of Current Usage"
+    sql:  ${sum_pemakaian_stock}/${sum_current_stock};;
+  }
+
+  measure: percent_of_intransit_usage {
+    type: number
+    label: "% of In Transit Usage"
+    sql:  ${sum_pemakaian_stock}/(${sum_in_transit_stock}+${sum_current_stock});;
+  }
+
+  measure: param_percent_usage {
+    type:  number
+    sql:
+    {% if stock_granularity._parameter_value == "'Stock'" %}
+      ${percent_of_current_usage}
+    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+      ${percent_of_intransit_usage}
+    {% else %}
+     "Not Enable"
+    {% endif %} ;;
   }
 
   set: details {
