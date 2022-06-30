@@ -327,6 +327,18 @@ view: ketahanan_stock {
     sql:  ${sum_pemakaian_stock}/(${sum_in_transit_stock}+${sum_current_stock});;
   }
 
+  measure: param_current_in_stock {
+    type:  number
+    sql:
+    {% if stock_granularity._parameter_value == "'Stock'" %}
+      ${current_stock}
+    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
+      ${in_transit_stock}
+    {% else %}
+     "Not Enable"
+    {% endif %} ;;
+  }
+
   measure: param_percent_usage {
     type:  number
     sql:
