@@ -192,7 +192,7 @@ view: RealisasiVSTarget{
       case when ${sum_target}=0 then 0.00 else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
     html:
-      {{ rendered_value }} from Target
+      {{ rendered_value }}
       <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
       <li>Target: {{ sum_target._rendered_value }}</li>
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
@@ -206,7 +206,7 @@ view: RealisasiVSTarget{
     sql: 1-${percent_of_realization_calc}  ;;
     drill_fields: [details*]
     html:
-      {{ rendered_value }} from Target
+      {{ rendered_value }}
       <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
       <li>Target: {{ sum_target._rendered_value }}</li>
       <li>Selisih: {{ sum_selisih._rendered_value }}</li>
