@@ -160,6 +160,7 @@ view: RealisasiVSTarget{
     sql: ${realisasi} ;;
     value_format_name: decimal_0
     drill_fields: [details*]
+    html: {{ rendered_value }} KL ;;
   }
 
   measure: sum_target {
