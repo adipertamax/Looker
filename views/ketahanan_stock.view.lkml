@@ -17,12 +17,14 @@ view: ketahanan_stock {
 
   dimension: current_stock {
     type: number
+    hidden: yes
     sql: ${TABLE}.CURRENT_STOCK ;;
     value_format_name: decimal_2
   }
 
   dimension: in_transit_stock {
     type: number
+    hidden: yes
     sql: ${TABLE}.IN_TRANSIT_STOCK ;;
     value_format_name: decimal_2
   }
@@ -31,6 +33,12 @@ view: ketahanan_stock {
     type: number
     sql: ${TABLE}.KETAHANAN_STOCK ;;
     value_format_name: decimal_2
+    html:
+    {% if material_group_type.rendered_value =="ADDITIVE" and value > 3 %}
+    <p style="background-color: #12B5CB; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    {% else %}
+    <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
+    {% endif %};;
   }
 
   dimension: ketahanan_stock_inc_intransit {
@@ -61,6 +69,7 @@ view: ketahanan_stock {
 
   dimension: pemakaian_stock {
     type: number
+    hidden: yes
     sql: ${TABLE}.PEMAKAIAN_STOCK ;;
   }
 
@@ -110,8 +119,8 @@ view: ketahanan_stock {
     type: count
     drill_fields: [details*]
     # html:
-    # {% if value > 50 %}
-    # <p style="background-color: lightgreen; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    # {% if status_stock_ap.rendered_value = 'Safe' %}
+    # <p style="background-color: #12B5CB; font-size: 100%; text-align:center">{{ketahanan_stock.rendered_value}}</p>
     # {% else %}
     # <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
     # {% endif %};;
@@ -273,6 +282,23 @@ view: ketahanan_stock {
         ${material_group_type}="LBO" THEN 0
         END
       ;;
+  }
+
+  measure: sum_pemakaian_stock {
+    type: sum
+    sql: ${pemakaian_stock} ;;
+  }
+
+  measure: sum_current_stock {
+    type: sum
+    sql: ${current_stock} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: sum_in_transit_stock {
+    type: sum
+    sql: ${in_transit_stock} ;;
+    value_format_name: decimal_2
   }
 
   set: details {
