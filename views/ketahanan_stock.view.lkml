@@ -86,6 +86,7 @@ view: ketahanan_stock {
       date,
       week,
       month,
+      month_num,
       quarter,
       year
     ]
@@ -297,7 +298,7 @@ view: ketahanan_stock {
 
   measure: sum_pemakaian_stock {
     type: sum
-    label: "Pemakaian Stock"
+    label: "Pemakaian Bahan"
     sql: ${pemakaian_stock} ;;
   }
 
@@ -328,6 +329,7 @@ view: ketahanan_stock {
   }
 
   measure: param_current_in_stock {
+    label: "Stock"
     type:  number
     sql:
     {% if stock_granularity._parameter_value == "'Stock'" %}
@@ -349,6 +351,60 @@ view: ketahanan_stock {
     {% else %}
      "Not Enable"
     {% endif %} ;;
+  }
+
+  dimension: Month_Posting {
+    type: string
+    case: {
+      when:{
+        sql: right(${posting_month},2)='01' ;;
+        label:"JANUARI"
+      }
+      when:{
+        sql: right(${posting_month},2)='02' ;;
+        label: "FEBRUARI"
+      }
+      when:{
+        sql: right(${posting_month},2)='03' ;;
+        label: "MARET"
+      }
+      when:{
+        sql: right(${posting_month},2)='04' ;;
+        label: "APRIL"
+      }
+      when:{
+        sql: right(${posting_month},2)='05' ;;
+        label: "MEI"
+      }
+      when:{
+        sql: right(${posting_month},2)='06' ;;
+        label: "JUNI"
+      }
+      when:{
+        sql: right(${posting_month},2)='07' ;;
+        label: "JULI"
+      }
+      when:{
+        sql: right(${posting_month},2)='08' ;;
+        label: "AGUSTUS"
+      }
+      when:{
+        sql: right(${posting_month},2)='09' ;;
+        label: "SEPTEMBER"
+      }
+      when:{
+        sql: right(${posting_month},2)='10' ;;
+        label: "OKTOBER"
+      }
+      when:{
+        sql: right(${posting_month},2)='11' ;;
+        label: "NOVEMBER"
+      }
+      when:{
+        sql: right(${posting_month},2)='12' ;;
+        label: "DESEMBER"
+      }
+}
   }
 
   set: details {
