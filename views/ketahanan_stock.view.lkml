@@ -286,17 +286,20 @@ view: ketahanan_stock {
 
   measure: sum_pemakaian_stock {
     type: sum
+    label: "Pemakaian Stock"
     sql: ${pemakaian_stock} ;;
   }
 
   measure: sum_current_stock {
     type: sum
+    label: "Current Stock"
     sql: ${current_stock} ;;
     value_format_name: decimal_2
   }
 
   measure: sum_in_transit_stock {
     type: sum
+    label: "In Transit Stock"
     sql: ${in_transit_stock} ;;
     value_format_name: decimal_2
   }
