@@ -354,6 +354,7 @@ view: ketahanan_stock {
   }
 
   dimension: Month_Posting {
+    order_by_field: posting_date
      type: string
      sql:  ${posting_month_name} ;;
   }
