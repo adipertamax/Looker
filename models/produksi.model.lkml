@@ -7,6 +7,10 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 
 explore: ketahanan_stok {
   view_name: ketahanan_stock
+  access_filter: {
+    field: plant.plant_desc
+    user_attribute: plant_name
+  }
 
   join: plant {
     type: left_outer

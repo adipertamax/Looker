@@ -54,6 +54,35 @@ view: ketahanan_stock {
   dimension: material_desc {
     type: string
     sql: ${TABLE}.MATERIAL_DESC ;;
+
+    action: {
+      label: "Create Order"
+      url: "https://some_site"
+
+      form_param: {
+        name: "Material Number"
+        default: "{{ material_number._value }}"
+      }
+
+      form_param: {
+        name: "Material Name"
+        default: "{{ material_desc._value }}"
+      }
+
+      form_param: {
+        name: "Quantity to Order"
+      }
+
+      form_param: {
+        name: "Current Ketahanan"
+        default: "{{ ketahanan_stock._rendered_value }}"
+      }
+
+      form_param: {
+        name: "Requester email"
+        default: "{{ _user_attributes.email }}"
+      }
+    }
   }
 
   dimension: material_group_type {
@@ -171,41 +200,41 @@ view: ketahanan_stock {
 ####Tambahan_anas#####
   dimension: status_stock_ap {
     type: string
-   case: {
-    when:{
-      sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}>=3 ;;
-      label:"Safe"
+    case: {
+      when:{
+        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}>=3 ;;
+        label:"Safe"
+      }
+      when:{
+        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
+        label:"Warning"
+      }
+      when:{
+        sql: ${material_group_type}="ADDITIVE" and  ${ketahanan_stock}<1 ;;
+        label:"Critical"
+      }
+      when:{
+        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}>=3 ;;
+        label:"Safe"
+      }
+      when:{
+        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
+        label:"Warning"
+      }
+      when:{
+        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<1 ;;
+        label:"Critical"
+      }
+      when:{
+        sql: ${material_group_type}="LBO" and ${ketahanan_stock}>=15 ;;
+        label:"Safe"
+      }
+      when:{
+        sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<15 ;;
+        label:"Critical"
+      }
     }
-    when:{
-      sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
-      label:"Warning"
-    }
-    when:{
-      sql: ${material_group_type}="ADDITIVE" and  ${ketahanan_stock}<1 ;;
-      label:"Critical"
-    }
-    when:{
-      sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}>=3 ;;
-      label:"Safe"
-    }
-    when:{
-      sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
-      label:"Warning"
-    }
-    when:{
-      sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<1 ;;
-      label:"Critical"
-    }
-    when:{
-      sql: ${material_group_type}="LBO" and ${ketahanan_stock}>=15 ;;
-      label:"Safe"
-    }
-    when:{
-      sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<15 ;;
-      label:"Critical"
-    }
-    }
-    }
+  }
 
   dimension: status_stock_in_transit_ap {
     type: string
