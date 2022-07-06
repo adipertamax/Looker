@@ -422,7 +422,7 @@ view: ketahanan_stock {
 
 
   set: details {
-    fields: [material_number,material_desc, material_group_type, ketahanan_stock, in_transit_stock, ketahanan_stock_inc_intransit]
+    fields: [material_number,material_desc,plant.plant_desc, material_group_type,  in_transit_stock,ketahanan_stock, ketahanan_stock_inc_intransit]
 
 
   }
