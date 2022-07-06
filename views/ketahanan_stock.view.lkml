@@ -36,7 +36,6 @@ view: ketahanan_stock {
     html:
     {% if material_group_type.rendered_value =="ADDITIVE" and value > 3 %}
     <font color=#12B5CB>{{ rendered_value }}</font>
-    <p style="background-color:#12B5CB ; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% elsif material_group_type.rendered_value =="ADDITIVE" and value > 1  %}
     <p style="background-color: #E52592; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% elsif material_group_type.rendered_value =="ADDITIVE" and value <1 %}
