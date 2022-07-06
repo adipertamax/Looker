@@ -36,7 +36,22 @@ view: ketahanan_stock {
     html:
     {% if material_group_type._value =='ADDITIVE' and value > 3 %}
     <font color=#12B5CB>{{ rendered_value }}</font>
-
+    {% elsif material_group_type._value =="ADDITIVE" and value > 1  %}
+    <p style="background-color: #E52592; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="ADDITIVE" and value <1 %}
+    <p style="background-color: #1A73E8; font-size: 100%; text-align:center">{{rendered_value}}</p>
+        {% elsif material_group_type._value =="LBO" and value >= 20 %}
+    <p style="background-color: #12B5CB; font-size: 100%; text-align:center">{{rendered_value}}</p>
+     {% elsif material_group_type._value =="LBO" and value >= 7 %}
+    <p style="background-color: #E52592; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="LBO" and value <7 %}
+    <p style="background-color: #1A73E8; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="PACKAGING" and value >= 3 %}
+    <p style="background-color: #12B5CB; font-size: 100%; text-align:center">{{rendered_value}}</p>
+     {% elsif material_group_type._value =="PACKAGING" and value >= 1 %}
+    <p style="background-color: #E52592; font-size: 100%; text-align:center">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="PACKAGING" and value <1 %}
+    <p style="background-color: #1A73E8; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% else %}
     <p style="background-color: black; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
