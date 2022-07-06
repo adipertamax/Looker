@@ -221,7 +221,9 @@ view: RealisasiVSTarget{
     type: number
     hidden: yes
     value_format_name: percent_0
-    sql: case when ${sum_target}=0 then 1 else ${sum_realisasi}/${sum_target} end  ;;
+    sql:  case when ${sum_target}=0 and ${sum_realisasi}>0 then 1
+      when ${sum_target}=0 and ${sum_realisasi}=0 then 0
+       else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
     html:
     {% if value > 1 %}
@@ -236,7 +238,9 @@ view: RealisasiVSTarget{
     type: number
     value_format_name: percent_0
     sql:
-      case when ${sum_target}=0 then 1 else ${sum_realisasi}/${sum_target} end  ;;
+       case when ${sum_target}=0 and ${sum_realisasi}>0 then 1
+      when ${sum_target}=0 and ${sum_realisasi}=0 then 0
+       else ${sum_realisasi}/${sum_target} end  ;;
     drill_fields: [details*]
     }
 
