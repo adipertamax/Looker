@@ -1,6 +1,11 @@
+include: "plant.view"
+
 view: ketahanan_stock {
+  extends: [plant]
   sql_table_name: `int-trial-gke.dm_ptpl.KETAHANAN_STOCK`
     ;;
+
+
 
   dimension: material_plant_key {
     primary_key: yes
@@ -127,11 +132,7 @@ view: ketahanan_stock {
   }
 
 
-  # dimension: plant_desc {
-  #   type: string
-  #   hidden: yes
-  #   sql: ${TABLE}.pl ;;
-  # }
+
 
   dimension_group: posting {
     type: time
@@ -424,7 +425,7 @@ view: ketahanan_stock {
 
   }
   set: detailPemakaianCurrent{
-    fields: [material_number,category_group,plant,]
+    fields: [material_number,category_group,plant_desc]
 
   }
 }

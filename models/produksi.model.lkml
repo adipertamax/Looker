@@ -17,7 +17,6 @@ explore: ketahanan_stok {
     view_label: "Plant"
     relationship: many_to_one
     sql_on: ${plant.plant} = ${ketahanan_stock.plant} ;;
-    fields: [plant.plant_desc]
   }
 
   join: status_ketahanan {
