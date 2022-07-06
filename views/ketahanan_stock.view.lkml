@@ -359,6 +359,7 @@ view: ketahanan_stock {
     type: sum
     label: "Pemakaian Bahan"
     sql: ${pemakaian_stock} ;;
+    drill_fields: [detailPemakaianCurrent*]
   }
 
   measure: sum_current_stock {
