@@ -34,21 +34,21 @@ view: ketahanan_stock {
     sql: ${TABLE}.KETAHANAN_STOCK ;;
     value_format_name: decimal_2
     html:
-    {% if material_group_type._value =='ADDITIVE' and value >= 3 %}
+    {% if material_group_type._value =='ADDITIVE' and value > 3 %}
     <p style="color: #12B5CB; font-size: 100%; text-align:left">{{rendered_value}}</p>
-    {% elsif material_group_type._value =="ADDITIVE" and value > 1  and value < 3 %}
+    {% elsif material_group_type._value =="ADDITIVE" and value > 1  and value <= 3 %}
     <p style="color: #E52592; font-size: 100%; text-align:left">{{rendered_value}}</p>
     {% elsif material_group_type._value =="ADDITIVE" and value <1 %}
     <p style="color: #1A73E8; font-size: 100%; text-align:left">{{rendered_value}}</p>
-        {% elsif material_group_type._value =="LBO" and value >= 20 %}
+        {% elsif material_group_type._value =="LBO" and value > 20 %}
     <p style="color: #12B5CB; font-size: 100%; text-align:left">{{rendered_value}}</p>
-     {% elsif material_group_type._value =="LBO" and value >= 7 %}
+     {% elsif material_group_type._value =="LBO" and value >  7 and value <= 20 %}
     <p style="color: #E52592; font-size: 100%; text-align:left">{{rendered_value}}</p>
     {% elsif material_group_type._value =="LBO" and value <7 %}
     <p style="color: #1A73E8; font-size: 100%; text-align:left">{{rendered_value}}</p>
-    {% elsif material_group_type._value =="PACKAGING" and value >= 3 %}
+    {% elsif material_group_type._value =="PACKAGING" and value > 3 %}
     <p style="color: #12B5CB; font-size: 100%; text-align:left">{{rendered_value}}</p>
-     {% elsif material_group_type._value =="PACKAGING" and value >= 1 %}
+     {% elsif material_group_type._value =="PACKAGING" and value > 1 and value <= 3 %}
     <p style="color: #E52592; font-size: 100%; text-align:left">{{rendered_value}}</p>
     {% elsif material_group_type._value =="PACKAGING" and value <1 %}
     <p style="color: #1A73E8; font-size: 100%; text-align:left">{{rendered_value}}</p>
@@ -218,11 +218,11 @@ view: ketahanan_stock {
     type: string
     case: {
       when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}>=3 ;;
+        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}>3 ;;
         label:"Safe"
       }
       when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
+        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}<=3 and ${ketahanan_stock}>1 ;;
         label:"Warning"
       }
       when:{
@@ -230,11 +230,11 @@ view: ketahanan_stock {
         label:"Critical"
       }
       when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}>=3 ;;
+        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}>3 ;;
         label:"Safe"
       }
       when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<3 and ${ketahanan_stock}>=1 ;;
+        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<=3 and ${ketahanan_stock}>1 ;;
         label:"Warning"
       }
       when:{
@@ -242,11 +242,15 @@ view: ketahanan_stock {
         label:"Critical"
       }
       when:{
-        sql: ${material_group_type}="LBO" and ${ketahanan_stock}>=15 ;;
+        sql: ${material_group_type}="LBO" and ${ketahanan_stock}>20 ;;
         label:"Safe"
       }
       when:{
-        sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<15 ;;
+        sql: ${material_group_type}="LBO" and ${ketahanan_stock}<=20 and ${ketahanan_stock}>7 ;;
+        label:"Warning"
+      }
+      when:{
+        sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<7 ;;
         label:"Critical"
       }
     }
