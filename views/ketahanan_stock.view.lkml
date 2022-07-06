@@ -367,6 +367,7 @@ view: ketahanan_stock {
     label: "Current Stock"
     sql: ${current_stock} ;;
     value_format_name: decimal_2
+    drill_fields: [detailPemakaianCurrent*]
   }
 
   measure: sum_in_transit_stock {
