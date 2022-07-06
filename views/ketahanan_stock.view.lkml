@@ -53,7 +53,7 @@ view: ketahanan_stock {
     {% elsif material_group_type.rendered_value =="PACKAGING" and value <1 %}
     <p style="background-color: #1A73E8; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% else %}
-    <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
+    <p style="background-color: black; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
   }
 
