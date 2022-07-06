@@ -427,7 +427,7 @@ view: ketahanan_stock {
 
   }
   set: detailPemakaianCurrent{
-    fields: [material_number,category_group,plant_desc,current_stock,sum_pemakaian_stock]
+    fields: [material_number,category_group,current_stock,sum_pemakaian_stock]
 
   }
 }
