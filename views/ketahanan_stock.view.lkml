@@ -20,6 +20,7 @@ view: ketahanan_stock {
     hidden: yes
     sql: ${TABLE}.CURRENT_STOCK ;;
     value_format_name: decimal_2
+     drill_fields: [detailPemakaianCurrent*]
   }
 
   dimension: in_transit_stock {
@@ -116,6 +117,7 @@ view: ketahanan_stock {
     type: number
     hidden: yes
     sql: ${TABLE}.PEMAKAIAN_STOCK ;;
+    drill_fields: [detailPemakaianCurrent*]
   }
 
   dimension: plant {
@@ -123,6 +125,13 @@ view: ketahanan_stock {
     hidden: yes
     sql: ${TABLE}.PLANT ;;
   }
+
+
+  # dimension: plant_desc {
+  #   type: string
+  #   hidden: yes
+  #   sql: ${TABLE}.pl ;;
+  # }
 
   dimension_group: posting {
     type: time
@@ -410,6 +419,12 @@ view: ketahanan_stock {
 
 
   set: details {
-    fields: [material_desc, material_group_type, ketahanan_stock, in_transit_stock, ketahanan_stock_inc_intransit]
+    fields: [material_number,material_desc, material_group_type, ketahanan_stock, in_transit_stock, ketahanan_stock_inc_intransit]
+
+
+  }
+  set: detailPemakaianCurrent{
+    fields: [material_number,category_group,plant,]
+
   }
 }
