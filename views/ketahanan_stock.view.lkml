@@ -34,7 +34,7 @@ view: ketahanan_stock {
     sql: ${TABLE}.KETAHANAN_STOCK ;;
     value_format_name: decimal_2
     html:
-    {% if material_group_type.rendered_value =="ADDITIVE" and value > 3 %}
+    {% if material_group_type._value =='ADDITIVE' and value > 3 %}
     <font color=#12B5CB>{{ rendered_value }}</font>
 
     {% else %}
