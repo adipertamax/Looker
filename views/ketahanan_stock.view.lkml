@@ -169,7 +169,7 @@ view: ketahanan_stock {
 
   }
   measure: count {
-    label: "Jumlah Material"
+    label: "Count of Material"
     type: count
     drill_fields: [details*]
     # html:
