@@ -3,11 +3,13 @@ view: RealisasiVSTarget{
     ;;
 
   dimension: kategori_grade {
+    label: "Grade Category"
     type: string
     sql: ${TABLE}.KATEGORI_GRADE ;;
   }
 
   dimension: kategori_kemasan {
+    label: "Packaging Category"
     type: string
     sql: ${TABLE}.KATEGORI_KEMASAN ;;
   }
@@ -18,6 +20,7 @@ view: RealisasiVSTarget{
   }
 
   dimension: material_number {
+    label: "Kimap"
     type: string
     hidden: yes
     sql: ${TABLE}.MATERIAL_NUMBER ;;
@@ -195,9 +198,10 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     html:
       {{ rendered_value }}
-      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
-      <li>Target: {{ sum_target._rendered_value }}</li>
-      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+      <br>
+      <br>Realization: {{ sum_realisasi._rendered_value }}
+      <br>Target: {{ sum_target._rendered_value }}
+      <br>Difference: {{ sum_selisih._rendered_value }}
     ;;
   }
 
@@ -208,11 +212,11 @@ view: RealisasiVSTarget{
     sql: 1-${percent_of_realization_calc}  ;;
     drill_fields: [details*]
     html:
-      {{ rendered_value }}
-      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
-      <li>Target: {{ sum_target._rendered_value }}</li>
-      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
-          ;;
+      <br>
+      <br>Realization: {{ sum_realisasi._rendered_value }}
+      <br>Target: {{ sum_target._rendered_value }}
+      <br>Difference: {{ sum_selisih._rendered_value }}
+    ;;
   }
 
   #hanya untuk detail
@@ -227,9 +231,9 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     html:
     {% if value > 1 %}
-      <p style="background-color: lightgreen; font-size: 100%; text-align:center">{{rendered_value}}</p>
+      <p style="background-color: #91C483 ; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% else %}
-      <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
+      <p style="background-color: #FFE162; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
   }
 
@@ -266,6 +270,6 @@ dimension: flag {
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      sum_realisasi, sum_target,  percent_of_realization]
+      sum_target,sum_realisasi,percent_of_realization]
   }
 }
