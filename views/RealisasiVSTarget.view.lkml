@@ -167,7 +167,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_target {
-    label: "Plan"
+    label: "Target"
     type: sum
     sql: ${target} ;;
     drill_fields: [details*]
