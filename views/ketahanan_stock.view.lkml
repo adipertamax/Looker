@@ -380,7 +380,7 @@ view: ketahanan_stock {
 
   measure: sum_pemakaian_stock {
     type: sum
-    label: "Materail Usage"
+    label: "Material Usage"
     sql: ${pemakaian_stock} ;;
     drill_fields: [detailPemakaianCurrent*]
   }
