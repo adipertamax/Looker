@@ -155,7 +155,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_realisasi {
-    label: "Realisasi"
+    label: "Realization"
     type: sum
     sql: ${realisasi} ;;
     value_format_name: decimal_0
@@ -164,7 +164,7 @@ view: RealisasiVSTarget{
   }
 
   measure: sum_target {
-    label: "Target"
+    label: "Plan"
     type: sum
     sql: ${target} ;;
     drill_fields: [details*]
