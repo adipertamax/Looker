@@ -114,6 +114,7 @@ view: ketahanan_stock {
   }
 
   dimension: material_number {
+    label: "Kimap"
     type: string
     sql: ${TABLE}.MATERIAL_NUMBER ;;
   }
@@ -130,9 +131,6 @@ view: ketahanan_stock {
     hidden: yes
     sql: ${TABLE}.PLANT ;;
   }
-
-
-
 
   dimension_group: posting {
     type: time
@@ -186,12 +184,37 @@ view: ketahanan_stock {
     type: sum
     sql: ${ketahanan_stock};;
     drill_fields: []
+    value_format_name: decimal_2
+    html:
+    {% if material_group_type._value =='ADDITIVE' and value > 3 %}
+    <p style="color: #12B5CB; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="ADDITIVE" and value > 1  and value <= 3 %}
+    <p style="color: #E52592; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="ADDITIVE" and value <1 %}
+    <p style="color: #1A73E8; font-size: 100%; text-align:right">{{rendered_value}}</p>
+        {% elsif material_group_type._value =="LBO" and value > 20 %}
+    <p style="color: #12B5CB; font-size: 100%; text-align:right">{{rendered_value}}</p>
+     {% elsif material_group_type._value =="LBO" and value >  7 and value <= 20 %}
+    <p style="color: #E52592; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="LBO" and value <7 %}
+    <p style="color: #1A73E8; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="PACKAGING" and value > 3 %}
+    <p style="color: #12B5CB; font-size: 100%; text-align:right">{{rendered_value}}</p>
+     {% elsif material_group_type._value =="PACKAGING" and value > 1 and value <= 3 %}
+    <p style="color: #E52592; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% elsif material_group_type._value =="PACKAGING" and value <1 %}
+    <p style="color: #1A73E8; font-size: 100%; text-align:right">{{rendered_value}}</p>
+    {% else %}
+    <p style="color: black; font-size:100%; text-align:right">{{rendered_value}}</p>
+    {% endif %};;
+
   }
 
   measure: sum_ketahanan_intransit {
     type: sum
     sql: ${ketahanan_stock_inc_intransit};;
     drill_fields: []
+    value_format_name: decimal_2
   }
 
   measure: total_material {
@@ -357,7 +380,7 @@ view: ketahanan_stock {
 
   measure: sum_pemakaian_stock {
     type: sum
-    label: "Pemakaian Bahan"
+    label: "Materail Usage"
     sql: ${pemakaian_stock} ;;
     drill_fields: [detailPemakaianCurrent*]
   }
@@ -422,7 +445,8 @@ view: ketahanan_stock {
 
 
   set: details {
-    fields: [material_number,material_desc,plant.plant_desc, material_group_type,  in_transit_stock,ketahanan_stock, ketahanan_stock_inc_intransit]
+    fields: [material_number,material_desc,plant.plant_desc,
+     sum_current_stock, sum_ketahanan, sum_ketahanan_intransit]
 
 
   }
