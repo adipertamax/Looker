@@ -415,7 +415,7 @@ view: ketahanan_stock {
   measure: param_current_in_stock {
     label: "Stock"
     type:  number
-    drill_fields: [details*]
+    drill_fields: [detailPemakaianCurrent*]
     sql:
     {% if stock_granularity._parameter_value == "'Stock'" %}
       ${sum_current_stock}
