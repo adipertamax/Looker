@@ -5,7 +5,9 @@ view: status_ketahanan {
   dimension: category {
     type: string
     sql: ${TABLE}.CATEGORY ;;
-    hidden: yes
+    label: "Category Status Ketahanan"
+    view_label: "Ketahanan Stock"
+    hidden: no
   }
 
   dimension: color {
