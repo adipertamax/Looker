@@ -29,7 +29,8 @@ view: status_ketahanan {
   dimension: unit {
     type: string
     sql: ${TABLE}.UNIT ;;
-    hidden: yes
+    view_label: "Ketahanan Stock"
+    hidden: no
   }
 
   dimension: min {
