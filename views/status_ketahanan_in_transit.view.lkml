@@ -20,7 +20,7 @@ sql_table_name: `test_ptpl.STATUS_KETAHANAN`
     hidden: yes
   }
 
-  dimension: status {
+  dimension: status_in_transit {
     type: string
     sql: ${TABLE}.LABEL ;;
     view_label: "Ketahanan Stock"

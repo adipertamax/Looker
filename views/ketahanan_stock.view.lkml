@@ -167,6 +167,9 @@ view: ketahanan_stock {
      #else: "unknown"
     }
 
+
+
+
   }
   measure: count {
     label: "Count of Material"
