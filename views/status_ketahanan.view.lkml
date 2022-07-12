@@ -35,13 +35,15 @@ view: status_ketahanan {
   dimension: min {
     type: number
     sql: ${TABLE}.min ;;
-    hidden: yes
+    view_label: "Ketahanan Stock"
+    hidden: no
   }
 
   dimension: max {
     type: number
     sql: ${TABLE}.max ;;
-    hidden: yes
+    view_label: "Ketahanan Stock"
+    hidden: no
   }
 
   # dimension: status_ketahanan {
@@ -55,6 +57,8 @@ view: status_ketahanan {
   #     END
   #   ;;
   # }
+
+
 
   measure: count {
     type: count
