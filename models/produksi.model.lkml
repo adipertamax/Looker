@@ -28,6 +28,7 @@ explore: ketahanan_stok {
       ;;
 
   }
+
 }
 
 explore: RealisasiVSTarget {
