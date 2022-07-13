@@ -53,7 +53,7 @@ explore: RealisasiVSTarget {
   }
 }
 
-explore :  ketahanan_in_transit{}
+explore :  status_ketahanan{}
   # join: rencana_produksi {
   #   type: left_outer
   #   view_label: "rencana_produksi"
