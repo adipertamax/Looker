@@ -94,68 +94,6 @@ view: RealisasiVSTarget{
 
   }
 
-  dimension: Month_Produksi {
-    type: string
-     case: {
-      when:{
-      sql: right(${posting_month},2)='01' ;;
-        label:"JANUARI"
-        }
-      when:{
-        sql: right(${posting_month},2)='02' ;;
-        label: "FEBRUARI"
-      }
-      when:{
-        sql: right(${posting_month},2)='03' ;;
-        label: "MARET"
-      }
-      when:{
-        sql: right(${posting_month},2)='04' ;;
-        label: "APRIL"
-      }
-      when:{
-        sql: right(${posting_month},2)='05' ;;
-        label: "MEI"
-      }
-      when:{
-        sql: right(${posting_month},2)='06' ;;
-        label: "JUNI"
-      }
-      when:{
-        sql: right(${posting_month},2)='07' ;;
-        label: "JULI"
-      }
-      when:{
-        sql: right(${posting_month},2)='08' ;;
-        label: "AGUSTUS"
-      }
-      when:{
-        sql: right(${posting_month},2)='09' ;;
-        label: "SEPTEMBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='10' ;;
-        label: "OKTOBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='11' ;;
-        label: "NOVEMBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='12' ;;
-        label: "DESEMBER"
-      }
-      #else: "Not Defined"
-    }
-
-    html: <p><b><font color="black" size="10" >      PENCAPAIAN DASHBOARD {{rendered_value}}</font><b><p> ;;
-  }
-
-  dimension: TitleFull {
-    type: string
-    sql: concat(${Month_Produksi},' ',${posting_year}) ;;
-    html: <p><b><font color="black" size="8" >      PENCAPAIAN  {{rendered_value}} </font><b><p> ;;
-  }
 
   measure: sum_realisasi {
     label: "Realization"
@@ -181,11 +119,7 @@ view: RealisasiVSTarget{
     sql: ${sum_realisasi}-${sum_target} ;;
   }
 
-  measure: jumlah_kemasan {
-    type: count_distinct
-    sql: ${kategori_kemasan} ;;
 
-  }
 
   measure: percent_of_realization_calc {
     label: "% of Realization"
@@ -248,25 +182,6 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     }
 
-dimension: flag {
-  type: string
-  case: {
-    when:{
-      sql: ${realisasi}>${target} ;;
-      label:"Yes"
-    }
-    when:{
-      sql: ${realisasi}<=${target} ;;
-      label:"No"
-    }
-    }
-
-}
-
-  measure: flag_dim {
-    type: yesno
-    sql: ${sum_realisasi}>${sum_target} ;;
-  }
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
