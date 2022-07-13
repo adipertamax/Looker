@@ -18,6 +18,7 @@ view: ketahanan_stock {
     type: number
     sql: ${TABLE}.AVG_PEMAKAIAN_STOCK ;;
     value_format_name: decimal_2
+    hidden: yes
   }
 
   dimension: current_stock {
@@ -66,11 +67,13 @@ view: ketahanan_stock {
   dimension: ketahanan_stock_inc_intransit {
     type: number
     sql: ${TABLE}.KETAHANAN_STOCK_INC_INTRANSIT ;;
+    hidden: yes
   }
 
   dimension: lead_time {
     type: number
     sql: ${TABLE}.LEAD_TIME ;;
+
   }
 
   dimension: material_desc {
@@ -148,33 +151,17 @@ view: ketahanan_stock {
     sql: ${TABLE}.POSTING_DATE ;;
   }
 
-#tambahan
-  dimension: category_group  {
-    type: string
-    case: {
-      when: {
-        sql: ${TABLE}.material_group_type = 'ADDITIVE' ;;
-        label: "Status"
-      }
-      when: {
-        sql: ${TABLE}.material_group_type = 'PACKAGING' ;;
-        label: "Status"
-      }
-      when: {
-        sql: ${TABLE}.material_group_type = 'OIL BASE' ;;
-        label: "Status LBO"
-      }
-     #else: "unknown"
-    }
 
 
 
 
-  }
+
+
   measure: count {
     label: "Count of Material"
     type: count
     drill_fields: [details*]
+    hidden: no
     # html:
     # {% if status_stock_ap.rendered_value = 'Safe' %}
     # <p style="background-color: #12B5CB; font-size: 100%; text-align:center">{{ketahanan_stock.rendered_value}}</p>
@@ -249,124 +236,8 @@ view: ketahanan_stock {
     drill_fields: [details*]
   }
 
-####Tambahan_anas#####
-  dimension: status_stock_ap {
-    type: string
-    case: {
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}>3 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock}<=3 and ${ketahanan_stock}>1 ;;
-        label:"Warning"
-      }
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and  ${ketahanan_stock}<1 ;;
-        label:"Critical"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}>3 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<=3 and ${ketahanan_stock}>1 ;;
-        label:"Warning"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock}<1 ;;
-        label:"Critical"
-      }
-      when:{
-        sql: ${material_group_type}="LBO" and ${ketahanan_stock}>20 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="LBO" and ${ketahanan_stock}<=20 and ${ketahanan_stock}>7 ;;
-        label:"Warning"
-      }
-      when:{
-        sql: ${material_group_type}="LBO" and  ${ketahanan_stock}<7 ;;
-        label:"Critical"
-      }
-    }
-  }
-
-  dimension: status_stock_in_transit_ap {
-    type: string
-    case: {
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock_inc_intransit}>=3 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and ${ketahanan_stock_inc_intransit}<3 and ${ketahanan_stock_inc_intransit}>=1 ;;
-        label:"Warning"
-      }
-      when:{
-        sql: ${material_group_type}="ADDITIVE" and  ${ketahanan_stock_inc_intransit}<1 ;;
-        label:"Critical"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock_inc_intransit}>=3 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock_inc_intransit}<3 and ${ketahanan_stock_inc_intransit}>=1 ;;
-        label:"Warning"
-      }
-      when:{
-        sql: ${material_group_type}="PACKAGING" and ${ketahanan_stock_inc_intransit}<1 ;;
-        label:"Critical"
-      }
-      when:{
-        sql: ${material_group_type}="LBO" and ${ketahanan_stock_inc_intransit}>=15 ;;
-        label:"Safe"
-      }
-      when:{
-        sql: ${material_group_type}="LBO" and ${ketahanan_stock_inc_intransit}<15 ;;
-        label:"Critical"
-      }
-    }
-  }
 
 
-  parameter: param_stock {
-    type: unquoted
-    allowed_value: {
-
-      label: "Status by Stock"
-      value: "stock"
-    }
-    allowed_value: {
-      label: "Status by InTransit"
-      value: "inTransit"
-    }
-  }
-
-  dimension: stock_test {
-    type:  string
-    sql:
-    {% if param_stock._parameter_value == 'stock' %}
-      ${status_stock_ap}
-    {% elsif param_stock._parameter_value == 'inTransit' %}
-      ${status_stock_in_transit_ap}
-    {% else %}
-     "Not Enable"
-    {% endif %} ;;
-  }
-
-  dimension: param_status {
-    type:  string
-    sql:
-    {% if stock_granularity._parameter_value == "'Stock'" %}
-      ${status_stock_ap}
-    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
-      ${status_stock_in_transit_ap}
-    {% else %}
-     "Not Enable"
-    {% endif %} ;;
-  }
 
   measure: jumlah {
     type: sum
@@ -409,11 +280,7 @@ view: ketahanan_stock {
     sql:  ${sum_pemakaian_stock}/${sum_current_stock};;
   }
 
-  measure: percent_of_intransit_usage {
-    type: number
-    label: "% of In Transit Usage"
-    sql:  ${sum_pemakaian_stock}/(${sum_in_transit_stock}+${sum_current_stock});;
-  }
+
 
   measure: param_current_in_stock {
     label: "Stock"
@@ -429,17 +296,7 @@ view: ketahanan_stock {
     {% endif %} ;;
   }
 
-  measure: param_percent_usage {
-    type:  number
-    sql:
-    {% if stock_granularity._parameter_value == "'Stock'" %}
-      ${percent_of_current_usage}
-    {% elsif stock_granularity._parameter_value == "'In-Transit Stock'" %}
-      ${percent_of_intransit_usage}
-    {% else %}
-     "Not Enable"
-    {% endif %} ;;
-  }
+
 
   dimension: Month_Posting {
     order_by_field: posting_date
@@ -455,7 +312,7 @@ view: ketahanan_stock {
 
   }
   set: detailPemakaianCurrent{
-    fields: [material_number,category_group,plant.plant_desc,sum_current_stock,sum_pemakaian_stock]
+    fields: [material_number,material_group_type,plant.plant_desc,sum_current_stock,sum_pemakaian_stock]
 
   }
 }
