@@ -51,7 +51,9 @@ explore: RealisasiVSTarget {
     relationship: many_to_one
     sql_on: ${plant.plant} = ${RealisasiVSTarget.plant} ;;
   }
+}
 
+explore :  ketahanan_in_transit{}
   # join: rencana_produksi {
   #   type: left_outer
   #   view_label: "rencana_produksi"
@@ -62,7 +64,6 @@ explore: RealisasiVSTarget {
   #           and ${rencana_produksi.kimap}<>'A060103727'
   #   ;;
   # }
-}
 
 # VISUALIZATION AND FORMATTING PARAMETERS
 map_layer: region_indonesia {
