@@ -3,11 +3,13 @@ view: RealisasiVSTarget{
     ;;
 
   dimension: kategori_grade {
+    label: "Grade Category"
     type: string
     sql: ${TABLE}.KATEGORI_GRADE ;;
   }
 
   dimension: kategori_kemasan {
+    label: "Packaging Category"
     type: string
     sql: ${TABLE}.KATEGORI_KEMASAN ;;
   }
@@ -18,6 +20,7 @@ view: RealisasiVSTarget{
   }
 
   dimension: material_number {
+    label: "Kimap"
     type: string
     hidden: yes
     sql: ${TABLE}.MATERIAL_NUMBER ;;
@@ -91,71 +94,9 @@ view: RealisasiVSTarget{
 
   }
 
-  dimension: Month_Produksi {
-    type: string
-     case: {
-      when:{
-      sql: right(${posting_month},2)='01' ;;
-        label:"JANUARI"
-        }
-      when:{
-        sql: right(${posting_month},2)='02' ;;
-        label: "FEBRUARI"
-      }
-      when:{
-        sql: right(${posting_month},2)='03' ;;
-        label: "MARET"
-      }
-      when:{
-        sql: right(${posting_month},2)='04' ;;
-        label: "APRIL"
-      }
-      when:{
-        sql: right(${posting_month},2)='05' ;;
-        label: "MEI"
-      }
-      when:{
-        sql: right(${posting_month},2)='06' ;;
-        label: "JUNI"
-      }
-      when:{
-        sql: right(${posting_month},2)='07' ;;
-        label: "JULI"
-      }
-      when:{
-        sql: right(${posting_month},2)='08' ;;
-        label: "AGUSTUS"
-      }
-      when:{
-        sql: right(${posting_month},2)='09' ;;
-        label: "SEPTEMBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='10' ;;
-        label: "OKTOBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='11' ;;
-        label: "NOVEMBER"
-      }
-      when:{
-        sql: right(${posting_month},2)='12' ;;
-        label: "DESEMBER"
-      }
-      #else: "Not Defined"
-    }
-
-    html: <p><b><font color="black" size="10" >      PENCAPAIAN DASHBOARD {{rendered_value}}</font><b><p> ;;
-  }
-
-  dimension: TitleFull {
-    type: string
-    sql: concat(${Month_Produksi},' ',${posting_year}) ;;
-    html: <p><b><font color="black" size="8" >      PENCAPAIAN  {{rendered_value}} </font><b><p> ;;
-  }
 
   measure: sum_realisasi {
-    label: "Realisasi"
+    label: "Realization"
     type: sum
     sql: ${realisasi} ;;
     value_format_name: decimal_0
@@ -178,11 +119,7 @@ view: RealisasiVSTarget{
     sql: ${sum_realisasi}-${sum_target} ;;
   }
 
-  measure: jumlah_kemasan {
-    type: count_distinct
-    sql: ${kategori_kemasan} ;;
 
-  }
 
   measure: percent_of_realization_calc {
     label: "% of Realization"
@@ -195,9 +132,10 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     html:
       {{ rendered_value }}
-      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
-      <li>Target: {{ sum_target._rendered_value }}</li>
-      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
+      <br>
+      <br>Realization: {{ sum_realisasi._rendered_value }}
+      <br>Target: {{ sum_target._rendered_value }}
+      <br>Difference: {{ sum_selisih._rendered_value }}
     ;;
   }
 
@@ -208,11 +146,11 @@ view: RealisasiVSTarget{
     sql: 1-${percent_of_realization_calc}  ;;
     drill_fields: [details*]
     html:
-      {{ rendered_value }}
-      <li>Realisasi: {{ sum_realisasi._rendered_value }} </li>
-      <li>Target: {{ sum_target._rendered_value }}</li>
-      <li>Selisih: {{ sum_selisih._rendered_value }}</li>
-          ;;
+      <br>
+      <br>Realization: {{ sum_realisasi._rendered_value }}
+      <br>Target: {{ sum_target._rendered_value }}
+      <br>Difference: {{ sum_selisih._rendered_value }}
+    ;;
   }
 
   #hanya untuk detail
@@ -227,9 +165,9 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     html:
     {% if value > 1 %}
-      <p style="background-color: lightgreen; font-size: 100%; text-align:center">{{rendered_value}}</p>
+      <p style="background-color: #91C483 ; font-size: 100%; text-align:center">{{rendered_value}}</p>
     {% else %}
-      <p style="background-color: lightblue; font-size:100%; text-align:center">{{rendered_value}}</p>
+      <p style="background-color: #FFE162; font-size:100%; text-align:center">{{rendered_value}}</p>
     {% endif %};;
   }
 
@@ -244,28 +182,9 @@ view: RealisasiVSTarget{
     drill_fields: [details*]
     }
 
-dimension: flag {
-  type: string
-  case: {
-    when:{
-      sql: ${realisasi}>${target} ;;
-      label:"Yes"
-    }
-    when:{
-      sql: ${realisasi}<=${target} ;;
-      label:"No"
-    }
-    }
-
-}
-
-  measure: flag_dim {
-    type: yesno
-    sql: ${sum_realisasi}>${sum_target} ;;
-  }
 
   set: details {
     fields: [material_number, plant, kategori_kemasan, kategori_grade, material_desc,
-      sum_realisasi, sum_target,  percent_of_realization]
+      sum_target,sum_realisasi,percent_of_realization]
   }
 }

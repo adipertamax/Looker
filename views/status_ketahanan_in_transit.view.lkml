@@ -1,13 +1,11 @@
-view: status_ketahanan {
-  sql_table_name: `test_ptpl.STATUS_KETAHANAN`
-    ;;
+view: ketahanan_in_transit {
+sql_table_name: `test_ptpl.STATUS_KETAHANAN`
+  ;;
 
   dimension: category {
     type: string
     sql: ${TABLE}.CATEGORY ;;
-    label: "Category Status Ketahanan"
-    view_label: "Ketahanan Stock"
-    hidden: no
+    hidden: yes
   }
 
   dimension: color {
@@ -22,7 +20,7 @@ view: status_ketahanan {
     hidden: yes
   }
 
-  dimension: status {
+  dimension: status_in_transit {
     type: string
     sql: ${TABLE}.LABEL ;;
     view_label: "Ketahanan Stock"
@@ -31,22 +29,19 @@ view: status_ketahanan {
   dimension: unit {
     type: string
     sql: ${TABLE}.UNIT ;;
-    view_label: "Ketahanan Stock"
-    hidden: no
+    hidden: yes
   }
 
   dimension: min {
     type: number
     sql: ${TABLE}.min ;;
-    view_label: "Ketahanan Stock"
-    hidden: no
+    hidden: yes
   }
 
   dimension: max {
     type: number
     sql: ${TABLE}.max ;;
-    view_label: "Ketahanan Stock"
-    hidden: no
+    hidden: yes
   }
 
   # dimension: status_ketahanan {
@@ -60,8 +55,6 @@ view: status_ketahanan {
   #     END
   #   ;;
   # }
-
-
 
   measure: count {
     type: count
